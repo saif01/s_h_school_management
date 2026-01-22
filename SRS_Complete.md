@@ -8,11 +8,11 @@
 | **Item** | **Details** |
 |----------|-------------|
 | **Document Title** | Software Requirements Specification - School Management System |
-| **Document Version** | 1.0 |
-| **Date** | 2025-01-27 |
-| **Status** | Draft |
+| **Document Version** | 1.1 |
+| **Date** | 2026-01-22 |
+| **Status** | Complete Draft (Pending Approval) |
 | **Prepared By** | Development Team |
-| **Approved By** | [To be filled] |
+| **Approved By** | Pending |
 | **Classification** | Internal Use |
 
 ### Document History
@@ -20,6 +20,7 @@
 | **Version** | **Date** | **Author** | **Description** |
 |-------------|----------|------------|-----------------|
 | 1.0 | 2025-01-27 | Development Team | Initial complete SRS document |
+| 1.1 | 2026-01-22 | Development Team | Normalize status/date, remove placeholders, ASCII cleanup |
 
 ---
 
@@ -175,7 +176,7 @@ The system interfaces with:
 
 **Step 1: Access Organization Setup**
 1. Login as Super Admin
-2. Navigate to: Settings → Organization → Profile
+2. Navigate to: Settings -> Organization -> Profile
 3. Click "Create New" or "Edit Existing" button
 
 **Step 2: Enter Basic Information**
@@ -218,7 +219,7 @@ The system interfaces with:
 9. Repeat for additional campuses
 
 **Step 5: Configure System-Wide Settings**
-1. Navigate to: Settings → System Configuration
+1. Navigate to: Settings -> System Configuration
 2. Set Timezone:
    - Select from dropdown list
    - Verify time display
@@ -278,7 +279,7 @@ The system interfaces with:
 
 **Step 1: Access Integration Settings**
 1. Login as Super Admin
-2. Navigate to: Settings → Integrations
+2. Navigate to: Settings -> Integrations
 3. View list of available integrations
 
 **Step 2: Configure Email Server (SMTP)**
@@ -333,77 +334,7 @@ The system interfaces with:
    - Fee reminder template
    - Exam result template
 
-**Step 4: Configure WhatsApp Integration (Optional)**
-1. Click "WhatsApp Configuration"
-2. Select Provider:
-   - WhatsApp Business API
-   - Twilio WhatsApp
-   - Other provider
-3. Enter API Credentials:
-   - API Endpoint
-   - Access Token
-   - Phone Number ID
-   - Business Account ID
-4. Configure Message Templates:
-   - Create/import approved templates
-   - Map templates to system notifications
-5. Test WhatsApp Integration:
-   - Send test message
-   - Verify delivery
-6. Click "Save" if successful
-
-**Step 5: Configure Payment Gateway - SSLCommerz**
-1. Click "Payment Gateway" → "SSLCommerz"
-2. Enter Merchant Credentials:
-   - Store ID
-   - Store Password
-   - API URL (sandbox/production)
-3. Configure Transaction Settings:
-   - Minimum transaction amount
-   - Maximum transaction amount
-   - Transaction currency
-   - Success URL
-   - Fail URL
-   - Cancel URL
-4. Enable/Disable Payment Methods:
-   - Credit/Debit Card
-   - Mobile Banking
-   - Bank Transfer
-5. Set Security Settings:
-   - Enable IP whitelist (optional)
-   - Enable SSL verification
-6. Test Payment:
-   - Use test credentials
-   - Process test transaction
-   - Verify callback/webhook
-7. Click "Save" if test successful
-
-**Step 6: Configure Payment Gateway - bKash**
-1. Click "Payment Gateway" → "bKash"
-2. Enter API Credentials:
-   - Username
-   - Password
-   - App Key
-   - App Secret
-   - API URL (sandbox/production)
-3. Configure Settings:
-   - Merchant Account Number
-   - Transaction limits
-   - Callback URL
-4. Test Integration
-5. Click "Save"
-
-**Step 7: Configure Payment Gateway - Nagad**
-1. Click "Payment Gateway" → "Nagad"
-2. Enter Credentials:
-   - Merchant ID
-   - API Key
-   - API Secret
-   - API Endpoint
-3. Configure Settings similar to bKash
-4. Test and Save
-
-**Step 8: Configure Biometric Device Integration (Optional)**
+**Step 4: Configure Biometric Device Integration (Optional)**
 1. Click "Biometric Device Configuration"
 2. Select Device Model:
    - ZKTeco
@@ -479,7 +410,7 @@ The system interfaces with:
 
 **Step 1: Access Role Management**
 1. Login as Super Admin
-2. Navigate to: Settings → Users & Roles → Roles
+2. Navigate to: Settings -> Users & Roles -> Roles
 3. View existing roles list
 
 **Step 2: Create Custom Role**
@@ -522,7 +453,7 @@ The system interfaces with:
 6. Save Role
 
 **Step 3: Assign Roles to Users**
-1. Navigate to: Settings → Users & Roles → Users
+1. Navigate to: Settings -> Users & Roles -> Users
 2. Select User to assign role
 3. Click "Edit Roles"
 4. Assign Roles:
@@ -538,7 +469,7 @@ The system interfaces with:
    - User must re-login for changes to take effect
 
 **Step 4: Configure Permission Inheritance**
-1. Navigate to: Settings → Users & Roles → Permission Inheritance
+1. Navigate to: Settings -> Users & Roles -> Permission Inheritance
 2. View role hierarchy
 3. Set Inheritance Rules:
    - Child roles inherit from parent roles
@@ -562,7 +493,7 @@ The system interfaces with:
 
 **Step 6: Audit Permission Changes**
 1. View Permission Change Log:
-   - Navigate to: Settings → Audit Logs → Permission Changes
+   - Navigate to: Settings -> Audit Logs -> Permission Changes
 2. View Log Entries:
    - Date and time
    - User who made change
@@ -597,11 +528,11 @@ The system interfaces with:
 
 **Step 1: Access System Configuration**
 1. Login as Super Admin
-2. Navigate to: Settings → System Configuration
+2. Navigate to: Settings -> System Configuration
 3. View configuration categories
 
 **Step 2: Configure Audit Logs**
-1. Navigate to: Settings → System Configuration → Audit Logs
+1. Navigate to: Settings -> System Configuration -> Audit Logs
 2. Set Log Retention Period:
    - Application Logs: 90 days (default)
    - Audit Logs: 365 days (default)
@@ -623,7 +554,7 @@ The system interfaces with:
 6. Save Audit Log Settings
 
 **Step 3: Configure Approval Workflow Engine**
-1. Navigate to: Settings → System Configuration → Approval Workflows
+1. Navigate to: Settings -> System Configuration -> Approval Workflows
 2. Create Approval Workflow:
    - Workflow Name (e.g., "Fee Waiver Approval")
    - Workflow Type:
@@ -649,7 +580,7 @@ The system interfaces with:
 6. Save Workflow Configuration
 
 **Step 4: Configure Data Retention Policies**
-1. Navigate to: Settings → System Configuration → Data Retention
+1. Navigate to: Settings -> System Configuration -> Data Retention
 2. Set Retention Periods:
    - Active Student Data: Indefinite
    - Archived Student Data: 10 years
@@ -667,7 +598,7 @@ The system interfaces with:
 5. Save Retention Policies
 
 **Step 5: Configure Backup Settings**
-1. Navigate to: Settings → System Configuration → Backup Settings
+1. Navigate to: Settings -> System Configuration -> Backup Settings
 2. Configure Daily Backups:
    - Enable daily backup: Yes/No
    - Backup time (e.g., 2:00 AM)
@@ -702,7 +633,7 @@ The system interfaces with:
 8. Save Backup Configuration
 
 **Step 6: Configure Notification Preferences**
-1. Navigate to: Settings → System Configuration → Notifications
+1. Navigate to: Settings -> System Configuration -> Notifications
 2. Set Default Notification Methods:
    - Email: Enable/Disable
    - SMS: Enable/Disable
@@ -756,7 +687,7 @@ The system interfaces with:
 **Requirements**:
 1. Create academic sessions (e.g., 2026, 2026-2027)
 2. Setup academic structure:
-   - Classes/Grades → Sections → Groups/Streams
+   - Classes/Grades -> Sections -> Groups/Streams
    - Subject combinations
 3. Setup subjects:
    - Compulsory and optional subjects
@@ -779,7 +710,7 @@ The system interfaces with:
 
 **Step 1: Create Academic Session**
 1. Login as Academic Admin
-2. Navigate to: Academic → Sessions → Create New
+2. Navigate to: Academic -> Sessions -> Create New
 3. Enter Session Details:
    - Session Name (e.g., "2026" or "2026-2027")
    - Start Date
@@ -798,7 +729,7 @@ The system interfaces with:
    - Makes session available for use
 
 **Step 2: Setup Academic Structure - Classes**
-1. Navigate to: Academic → Structure → Classes
+1. Navigate to: Academic -> Structure -> Classes
 2. Create Class:
    - Click "Add New Class"
    - Enter Class Name (e.g., "Class 1", "Grade 1")
@@ -813,7 +744,7 @@ The system interfaces with:
    - Set class hierarchy if needed
 
 **Step 3: Setup Sections**
-1. Navigate to: Academic → Structure → Sections
+1. Navigate to: Academic -> Structure -> Sections
 2. For each Class, create Sections:
    - Select Class
    - Click "Add Section"
@@ -825,7 +756,7 @@ The system interfaces with:
 4. Repeat for all classes
 
 **Step 4: Setup Groups/Streams**
-1. Navigate to: Academic → Structure → Groups
+1. Navigate to: Academic -> Structure -> Groups
 2. For each Class/Section, create Groups:
    - Select Class and Section
    - Click "Add Group"
@@ -838,7 +769,7 @@ The system interfaces with:
 5. Repeat for all classes that have groups
 
 **Step 5: Setup Subjects**
-1. Navigate to: Academic → Subjects → Create New
+1. Navigate to: Academic -> Subjects -> Create New
 2. Enter Subject Details:
    - Subject Name (e.g., "Mathematics", "English")
    - Subject Code (e.g., "MATH", "ENG")
@@ -873,7 +804,7 @@ The system interfaces with:
 8. Repeat for all subjects
 
 **Step 6: Setup Departments**
-1. Navigate to: Academic → Departments
+1. Navigate to: Academic -> Departments
 2. Create Academic Departments:
    - Click "Add Department"
    - Enter Department Name (e.g., "Science", "Arts", "Commerce")
@@ -888,7 +819,7 @@ The system interfaces with:
    - Save Department
 
 **Step 7: Configure Grading System**
-1. Navigate to: Academic → Settings → Grading System
+1. Navigate to: Academic -> Settings -> Grading System
 2. Create Grade Scale:
    - Click "Add Grade"
    - Enter Grade Name (e.g., "A+", "A", "B+", "B", "C", "F")
@@ -909,7 +840,7 @@ The system interfaces with:
 5. Save Grading System
 
 **Step 8: Setup Academic Calendar**
-1. Navigate to: Academic → Calendar
+1. Navigate to: Academic -> Calendar
 2. Add Holidays:
    - Click "Add Holiday"
    - Enter Holiday Name
@@ -932,7 +863,7 @@ The system interfaces with:
    - Select days of week that are working days
    - Set working hours
 5. Setup Bell Schedule:
-   - Navigate to: Academic → Settings → Bell Schedule
+   - Navigate to: Academic -> Settings -> Bell Schedule
    - Add Period:
      * Period Number
      * Period Name (e.g., "Period 1", "Lunch")
@@ -978,7 +909,7 @@ The system interfaces with:
 
 **Step 1: Create Admission Circular**
 1. Login as Academic Admin or Front Desk
-2. Navigate to: Admissions → Admission Circulars → Create New
+2. Navigate to: Admissions -> Admission Circulars -> Create New
 3. Enter Circular Details:
    - Circular Title (e.g., "Admission 2026")
    - Academic Session (select from dropdown)
@@ -1056,7 +987,7 @@ The system interfaces with:
 13. If published, system sends notifications (if configured)
 
 **Step 2: Configure Application Form Fields (Advanced)**
-1. Navigate to: Admissions → Settings → Form Builder
+1. Navigate to: Admissions -> Settings -> Form Builder
 2. View default form fields
 3. Add Custom Fields:
    - Click "Add Field"
@@ -1124,7 +1055,7 @@ The system interfaces with:
    - Verifies documents are attached
    - Collects application fee receipt
 6. Front Desk Officer Enters Application:
-   - Navigate to: Admissions → Applications → Add New
+   - Navigate to: Admissions -> Applications -> Add New
    - Enters all information from form
    - Uploads scanned documents
    - Enters payment details
@@ -1133,7 +1064,7 @@ The system interfaces with:
 7. System sets status: "Submitted"
 
 **Step 3: Document Verification**
-1. Academic Admin/Front Desk accesses: Admissions → Applications → Pending Verification
+1. Academic Admin/Front Desk accesses: Admissions -> Applications -> Pending Verification
 2. Views list of submitted applications
 3. Selects application to verify
 4. Opens application details
@@ -1195,7 +1126,7 @@ The system interfaces with:
 **Detailed Step-by-Step Process**:
 
 **Step 1: Create Test/Interview Schedule**
-1. Navigate to: Admissions → Test/Interview → Create Schedule
+1. Navigate to: Admissions -> Test/Interview -> Create Schedule
 2. Select Admission Circular
 3. Create Test Schedule:
    - Test Date
@@ -1222,7 +1153,7 @@ The system interfaces with:
    - Schedule visible on admission portal
 
 **Step 2: Generate Admit Cards**
-1. Navigate to: Admissions → Test/Interview → Generate Admit Cards
+1. Navigate to: Admissions -> Test/Interview -> Generate Admit Cards
 2. Select Admission Circular
 3. Select Applicants:
    - All verified applicants (bulk)
@@ -1256,7 +1187,7 @@ The system interfaces with:
    - Collect answer sheets
    - Evaluate answer sheets
 3. Enter Test Marks:
-   - Navigate to: Admissions → Test/Interview → Enter Marks
+   - Navigate to: Admissions -> Test/Interview -> Enter Marks
    - Select Admission Circular
    - Select Applicant
    - Enter marks for each subject:
@@ -1274,7 +1205,7 @@ The system interfaces with:
    - Confirm import
 
 **Step 4: Enter Interview Scores (if applicable)**
-1. Navigate to: Admissions → Test/Interview → Interview Scores
+1. Navigate to: Admissions -> Test/Interview -> Interview Scores
 2. Select Applicant
 3. Enter Interview Details:
    - Interview Date
@@ -1288,7 +1219,7 @@ The system interfaces with:
 4. Save Interview Scores
 
 **Step 5: Publish Merit List**
-1. Navigate to: Admissions → Test/Interview → Generate Merit List
+1. Navigate to: Admissions -> Test/Interview -> Generate Merit List
 2. Select Admission Circular
 3. Select Class
 4. Configure Merit List Criteria:
@@ -1316,7 +1247,7 @@ The system interfaces with:
      * Not selected: "Thank you for applying"
 
 **Step 6: Automated Seat Allocation (Optional)**
-1. Navigate to: Admissions → Seat Allocation
+1. Navigate to: Admissions -> Seat Allocation
 2. Select Admission Circular and Class
 3. Configure Allocation Rules:
    - Allocation based on merit rank
@@ -1342,7 +1273,7 @@ The system interfaces with:
 **Detailed Step-by-Step Process**:
 
 **Step 1: Approve Selected Students**
-1. Navigate to: Admissions → Final Admission → Approve Students
+1. Navigate to: Admissions -> Final Admission -> Approve Students
 2. View Merit List / Selected Applicants
 3. Select Students for Admission:
    - Select individual students
@@ -1358,7 +1289,7 @@ The system interfaces with:
    - Sends approval notification to parents
 
 **Step 2: Assign Class/Section/Group**
-1. Navigate to: Admissions → Final Admission → Assign Class
+1. Navigate to: Admissions -> Final Admission -> Assign Class
 2. Select Approved Student
 3. Assign Academic Details:
    - Select Academic Session
@@ -1389,10 +1320,10 @@ The system interfaces with:
    - Sequential numbering
    - Unique identifier
 2. View Generated ID:
-   - Navigate to: Students → View Student
+   - Navigate to: Students -> View Student
    - Student ID displayed on profile
 3. Print ID Card (optional):
-   - Navigate to: Students → ID Cards → Generate
+   - Navigate to: Students -> ID Cards -> Generate
    - Select student
    - System generates ID card with:
      * Student ID
@@ -1422,7 +1353,7 @@ The system interfaces with:
    - Communicate with teachers
 
 **Step 5: Assign Roll Numbers**
-1. Navigate to: Students → Roll Number Assignment
+1. Navigate to: Students -> Roll Number Assignment
 2. Select Class and Section
 3. Configure Roll Number Rules:
    - Auto-assign: Sequential (1, 2, 3...)
@@ -1440,7 +1371,7 @@ The system interfaces with:
 
 **Step 6: Update Student Status**
 1. System automatically updates status:
-   - From "Approved for Admission" → "Enrolled"
+   - From "Approved for Admission" -> "Enrolled"
 2. Student now appears in:
    - Class student list
    - Attendance system
@@ -1459,7 +1390,7 @@ The system interfaces with:
      * Registration Fee
      * Other applicable fees
 2. View Generated Invoice:
-   - Navigate to: Fees → Invoices → View
+   - Navigate to: Fees -> Invoices -> View
    - Select student
    - View invoice details
 3. Invoice Details:
@@ -1472,7 +1403,7 @@ The system interfaces with:
 
 **Step 2: Payment Collection**
 1. Cash Payment:
-   - Navigate to: Fees → Payments → Collect Payment
+   - Navigate to: Fees -> Payments -> Collect Payment
    - Select student
    - Select invoice
    - Enter payment amount (full or partial)
@@ -1512,7 +1443,7 @@ The system interfaces with:
      * Balance (if partial payment)
    - School Logo and Details
 3. Print Receipt:
-   - Navigate to: Fees → Receipts → Print
+   - Navigate to: Fees -> Receipts -> Print
    - Select receipt
    - Click "Print"
    - Or email receipt to parent
@@ -1523,14 +1454,14 @@ The system interfaces with:
    - Payment history
    - Outstanding balance
 2. View Ledger:
-   - Navigate to: Fees → Student Ledger
+   - Navigate to: Fees -> Student Ledger
    - Select student
    - View complete transaction history
 
 **Step 5: Update Student Status to Active**
 1. When admission fee is fully paid:
    - System automatically changes status
-   - From "Enrolled" → "Active"
+   - From "Enrolled" -> "Active"
 2. Active Student can now:
    - Attend classes
    - Access all student portal features
@@ -1552,7 +1483,7 @@ The system interfaces with:
 
 **Requirements**:
 1. Student status lifecycle:
-   - Applicant → Enrolled → Active → Promoted/Repeat → Transfer/Withdraw → Alumni
+   - Applicant -> Enrolled -> Active -> Promoted/Repeat -> Transfer/Withdraw -> Alumni
 2. Transfer Certificate (TC) workflow:
    - TC request initiation
    - Clearance checks (fees, library, hostel, transport)
@@ -1568,14 +1499,14 @@ The system interfaces with:
 **Step 1: Transfer Certificate (TC) Request**
 1. Student/Parent initiates TC request:
    - Login to portal
-   - Navigate to: Students → Transfer Certificate → Request TC
+   - Navigate to: Students -> Transfer Certificate -> Request TC
    - Enter transfer details:
      * Transfer reason
      * Destination school (if known)
      * Transfer date
    - Submit request
 2. Or Front Desk creates request:
-   - Navigate to: Students → Transfer Certificate → Create Request
+   - Navigate to: Students -> Transfer Certificate -> Create Request
    - Select student
    - Enter transfer details
    - Save request
@@ -1585,26 +1516,26 @@ The system interfaces with:
    - Notifies Academic Admin
 
 **Step 2: Clearance Checks**
-1. Academic Admin accesses: Students → Transfer Certificate → Pending Clearance
+1. Academic Admin accesses: Students -> Transfer Certificate -> Pending Clearance
 2. Select TC request
 3. System automatically checks:
    - Fee Clearance:
-     * Navigate to: Fees → Student Ledger
+     * Navigate to: Fees -> Student Ledger
      * Check outstanding balance
      * If dues exist: Clearance failed
      * If no dues: Clearance passed
    - Library Clearance:
-     * Navigate to: Library → Student Books
+     * Navigate to: Library -> Student Books
      * Check issued books
      * If books not returned: Clearance failed
      * If all returned: Clearance passed
    - Hostel Clearance (if applicable):
-     * Navigate to: Hostel → Student Allocation
+     * Navigate to: Hostel -> Student Allocation
      * Check hostel allocation
      * If allocated: Check room clearance
      * Clearance status updated
    - Transport Clearance (if applicable):
-     * Navigate to: Transport → Student Allocation
+     * Navigate to: Transport -> Student Allocation
      * Check transport allocation
      * Check transport fee payment
      * Clearance status updated
@@ -1619,7 +1550,7 @@ The system interfaces with:
 
 **Step 3: TC Approval Workflow**
 1. Academic Admin reviews:
-   - Navigate to: Students → Transfer Certificate → Pending Approval
+   - Navigate to: Students -> Transfer Certificate -> Pending Approval
    - Review student details
    - Review clearance status
    - Review transfer reason
@@ -1635,7 +1566,7 @@ The system interfaces with:
 
 **Step 4: Generate Transfer Certificate**
 1. When TC approved:
-   - Navigate to: Students → Transfer Certificate → Generate TC
+   - Navigate to: Students -> Transfer Certificate -> Generate TC
    - Select approved request
 2. System generates TC:
    - Unique TC Number (format: TC-YYYY-####)
@@ -1657,7 +1588,7 @@ The system interfaces with:
 
 **Step 5: Update Student Status**
 1. After TC issued:
-   - Navigate to: Students → Update Status
+   - Navigate to: Students -> Update Status
    - Select student
    - Change status to "Transferred"
 2. System Actions:
@@ -1683,7 +1614,7 @@ The system interfaces with:
 
 **Step 7: Re-admission Workflow**
 1. For returning students:
-   - Navigate to: Students → Re-admission
+   - Navigate to: Students -> Re-admission
    - Search previous student record
    - Verify previous enrollment
 2. Create re-admission:
@@ -1692,7 +1623,7 @@ The system interfaces with:
    - Assign new class/section
    - Generate new student ID (or reactivate old)
 3. Update status:
-   - From "Transferred"/"Withdrawn" → "Active"
+   - From "Transferred"/"Withdrawn" -> "Active"
    - Restore student access
    - Update class strength
 
@@ -1712,7 +1643,7 @@ The system interfaces with:
 **Detailed Step-by-Step Process**:
 
 **Step 1: Define Periods and Breaks**
-1. Navigate to: Academic → Timetable → Periods Setup
+1. Navigate to: Academic -> Timetable -> Periods Setup
 2. Configure Periods:
    - Click "Add Period"
    - Enter Period Number (1, 2, 3...)
@@ -1734,7 +1665,7 @@ The system interfaces with:
    - Adjust if needed
 
 **Step 2: Define Rooms/Labs**
-1. Navigate to: Academic → Timetable → Rooms Setup
+1. Navigate to: Academic -> Timetable -> Rooms Setup
 2. Add Room:
    - Click "Add Room"
    - Enter Room Number/Name
@@ -1756,7 +1687,7 @@ The system interfaces with:
    - Set room hierarchy if needed
 
 **Step 3: Manage Teacher Availability**
-1. Navigate to: Academic → Timetable → Teacher Availability
+1. Navigate to: Academic -> Timetable -> Teacher Availability
 2. Select Teacher
 3. Set Available Periods:
    - For each day of week
@@ -1773,7 +1704,7 @@ The system interfaces with:
 7. Repeat for all teachers
 
 **Step 4: Create Class Routine**
-1. Navigate to: Academic → Timetable → Class Routine
+1. Navigate to: Academic -> Timetable -> Class Routine
 2. Select Academic Session
 3. Select Class and Section
 4. Create Routine:
@@ -1803,7 +1734,7 @@ The system interfaces with:
    - If invalid: Error messages shown
 
 **Step 5: Generate Teacher Routine**
-1. Navigate to: Academic → Timetable → Teacher Routine
+1. Navigate to: Academic -> Timetable -> Teacher Routine
 2. Select Teacher
 3. System automatically generates:
    - All classes assigned to teacher
@@ -1816,7 +1747,7 @@ The system interfaces with:
    - Print routine
 
 **Step 6: Generate Room Routine**
-1. Navigate to: Academic → Timetable → Room Routine
+1. Navigate to: Academic -> Timetable -> Room Routine
 2. Select Room
 3. System automatically generates:
    - All classes using room
@@ -1835,7 +1766,7 @@ The system interfaces with:
    - Class without teacher
    - Period without subject
 2. View Conflicts:
-   - Navigate to: Academic → Timetable → Conflicts
+   - Navigate to: Academic -> Timetable -> Conflicts
    - View all detected conflicts
 3. Resolve Conflicts:
    - Select conflict
@@ -1852,7 +1783,7 @@ The system interfaces with:
    - Verify all periods filled
    - Ensure no conflicts
 2. Publish Timetable:
-   - Navigate to: Academic → Timetable → Publish
+   - Navigate to: Academic -> Timetable -> Publish
    - Select timetable to publish
    - Click "Publish"
    - Set publish date
@@ -1870,7 +1801,7 @@ The system interfaces with:
 
 **Step 1: Teacher Marks Leave/Unavailability**
 1. Teacher logs in
-2. Navigate to: Timetable → Mark Unavailability
+2. Navigate to: Timetable -> Mark Unavailability
 3. Select Date(s):
    - Single day
    - Date range
@@ -1888,7 +1819,7 @@ The system interfaces with:
    - Notifies Academic Admin
 
 **Step 2: System Suggests Substitute Teachers**
-1. Academic Admin accesses: Timetable → Substitute Assignment
+1. Academic Admin accesses: Timetable -> Substitute Assignment
 2. View Unavailable Teachers:
    - List of teachers with unavailability
    - Dates and periods
@@ -1941,7 +1872,7 @@ The system interfaces with:
 
 **Step 1: Teacher Logs Daily Lesson**
 1. Teacher logs in
-2. Navigate to: Academic → Class Diary → Log Lesson
+2. Navigate to: Academic -> Class Diary -> Log Lesson
 3. Select Date (default: today)
 4. Select Class and Section
 5. Select Subject
@@ -1962,7 +1893,7 @@ The system interfaces with:
 7. Save Lesson Log
 
 **Step 2: Review Lesson Logs**
-1. Class Teacher/Principal accesses: Academic → Class Diary → Review
+1. Class Teacher/Principal accesses: Academic -> Class Diary -> Review
 2. View Lesson Logs:
    - Filter by:
      * Date range
@@ -1979,7 +1910,7 @@ The system interfaces with:
 5. Approve Log (if approval required)
 
 **Step 3: Lesson Plan Templates (Optional)**
-1. Navigate to: Academic → Class Diary → Templates
+1. Navigate to: Academic -> Class Diary -> Templates
 2. Create Template:
    - Enter Template Name
    - Define structure:
@@ -1995,7 +1926,7 @@ The system interfaces with:
 
 **Step 4: Progress Tracking**
 1. View Progress Reports:
-   - Navigate to: Academic → Class Diary → Progress
+   - Navigate to: Academic -> Class Diary -> Progress
 2. Select Class and Subject
 3. View Progress:
    - Topics covered
@@ -2023,7 +1954,7 @@ The system interfaces with:
 
 **Step 1: Take Daily Attendance**
 1. Teacher/Class Teacher logs in
-2. Navigate to: Attendance → Take Attendance
+2. Navigate to: Attendance -> Take Attendance
 3. Select Date (default: today)
 4. Select Class and Section
 5. View Student List:
@@ -2058,7 +1989,7 @@ The system interfaces with:
     - If invalid: Error message shown
 
 **Step 2: Take Period-wise Attendance**
-1. Navigate to: Attendance → Period Attendance
+1. Navigate to: Attendance -> Period Attendance
 2. Select Date
 3. Select Class and Section
 4. Select Period/Subject:
@@ -2091,7 +2022,7 @@ The system interfaces with:
 **Step 4: Leave Application and Approval**
 1. Student/Parent Initiates Leave:
    - Login to portal
-   - Navigate to: Leave → Apply Leave
+   - Navigate to: Leave -> Apply Leave
    - Select Leave Date(s):
      * Single day
      * Multiple days (date range)
@@ -2103,7 +2034,7 @@ The system interfaces with:
    - Status: "Pending Approval"
    - Notifies Class Teacher
 3. Class Teacher Reviews:
-   - Navigate to: Attendance → Leave Requests
+   - Navigate to: Attendance -> Leave Requests
    - View pending requests
    - Review leave details
 4. Approve/Reject Leave:
@@ -2144,7 +2075,7 @@ The system interfaces with:
 
 **Step 6: Generate Attendance Reports**
 1. Daily Attendance Sheet:
-   - Navigate to: Reports → Attendance → Daily Sheet
+   - Navigate to: Reports -> Attendance -> Daily Sheet
    - Select Date
    - Select Class/Section
    - Click "Generate Report"
@@ -2154,7 +2085,7 @@ The system interfaces with:
      * Total present/absent/late
    - Export to PDF/Excel
 2. Monthly Summary:
-   - Navigate to: Reports → Attendance → Monthly Summary
+   - Navigate to: Reports -> Attendance -> Monthly Summary
    - Select Month
    - Select Class/Section
    - Report shows:
@@ -2164,7 +2095,7 @@ The system interfaces with:
      * Working days in month
    - Export option available
 3. Term-wise Summary:
-   - Navigate to: Reports → Attendance → Term Summary
+   - Navigate to: Reports -> Attendance -> Term Summary
    - Select Term
    - Select Class/Section
    - Report shows:
@@ -2172,7 +2103,7 @@ The system interfaces with:
      * Attendance percentage
      * Comparison with previous term
 4. Subject-wise Attendance:
-   - Navigate to: Reports → Attendance → Subject-wise
+   - Navigate to: Reports -> Attendance -> Subject-wise
    - Select Subject
    - Select Date Range
    - Report shows:
@@ -2181,7 +2112,7 @@ The system interfaces with:
 
 **Step 7: Minimum Attendance Rules for Exam Eligibility**
 1. Configure Minimum Attendance:
-   - Navigate to: Settings → Attendance → Exam Eligibility
+   - Navigate to: Settings -> Attendance -> Exam Eligibility
    - Set Minimum Attendance Percentage (e.g., 75%)
    - Set Rule Type:
      * Overall attendance
@@ -2199,7 +2130,7 @@ The system interfaces with:
      * Shows shortfall
 3. Exception Handling:
    - Principal/Admin can override:
-     * Navigate to: Students → Exam Eligibility
+     * Navigate to: Students -> Exam Eligibility
      * Select student
      * Click "Approve Exception"
      * Enter reason
@@ -2249,6 +2180,58 @@ The system interfaces with:
    - Time limits
    - Results and analytics
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Create Assignment**
+1. Teacher logs in
+2. Navigate to: Academics -> Homework/Assignments -> Create
+3. Select Class/Section and Subject
+4. Enter title, instructions, due date, and marks/weightage
+5. Attach files or links (optional)
+6. Set submission type: Online/Offline/Both
+7. Click "Save Draft" or "Publish"
+
+**Step 2: Publish Assignment**
+1. Review assignment details
+2. Set visibility:
+   - Students
+   - Parents (optional)
+3. Set late submission policy:
+   - Allow late submission: Yes/No
+   - Late penalty (if applicable)
+4. Click "Publish"
+5. System sends notifications (optional)
+
+**Step 3: Student Submission (Online)**
+1. Student logs in
+2. Navigate to: Student Portal -> Assignments
+3. Open assignment and review instructions
+4. Upload file(s) or enter text response
+5. Click "Submit"
+6. System confirms submission timestamp
+
+**Step 4: Offline Submission Tracking**
+1. Teacher collects offline work
+2. Navigate to: Academics -> Homework/Assignments -> Submissions
+3. Mark student as "Submitted (Offline)"
+4. Add submission date and notes (optional)
+
+**Step 5: Review and Grading**
+1. Teacher opens submissions list
+2. For each student:
+   - View submission
+   - Enter marks
+   - Add feedback/comments
+3. Save grades
+4. System updates student and parent view (if enabled)
+
+**Step 6: Close Assignment**
+1. Review completion status
+2. Click "Close Assignment" after grading
+3. System locks further submissions
+4. Generate assignment summary report
+
+
 **Acceptance Criteria**:
 - File uploads work reliably
 - Submission deadlines are enforced
@@ -2283,6 +2266,55 @@ The system interfaces with:
    - Session notes
    - Counselor assignment
    - Follow-up scheduling
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Log Incident**
+1. Authorized user logs in
+2. Navigate to: Students -> Discipline -> New Incident
+3. Select student and incident type
+4. Enter date, time, location, and description
+5. Attach evidence (files/photos) and witnesses (optional)
+6. Save incident record
+
+**Step 2: Review and Classify**
+1. Admin reviews incident queue
+2. Verify details and classification (minor/major/severe)
+3. Assign responsible staff (counselor/discipline officer)
+4. Set priority and next action date
+
+**Step 3: Define Action**
+1. Select action type:
+   - Warning
+   - Counseling
+   - Guardian call
+   - Suspension (policy-based)
+2. Set action details and duration (if applicable)
+3. Record approval if required
+4. Save action plan
+
+**Step 4: Notify Stakeholders**
+1. Send parent/guardian notification (policy-based)
+2. Notify class teacher and relevant staff
+3. Log communication in the incident record
+
+**Step 5: Counseling and Follow-up**
+1. Schedule counseling session
+2. Record session notes and outcomes
+3. Set follow-up date
+4. Track repeated incidents or improvements
+
+**Step 6: Close Case**
+1. Verify actions completed
+2. Add closure notes and final outcome
+3. Mark incident as "Closed"
+4. Generate discipline summary report if needed
+
+**Step 7: Health/Medical Record Update (if applicable)**
+1. Navigate to: Students -> Health Records
+2. Update medical notes, clinic logs, or medication
+3. Save and restrict access per policy
+
 
 **Acceptance Criteria**:
 - Sensitive information is properly protected
@@ -2322,7 +2354,7 @@ The system interfaces with:
 
 **Step 1: Create Exam Term**
 1. Login as Exam Controller
-2. Navigate to: Exams → Exam Terms → Create New
+2. Navigate to: Exams -> Exam Terms -> Create New
 3. Enter Exam Term Details:
    - Term Name (e.g., "Class Test 1", "Mid-term Exam", "Final Exam")
    - Term Type:
@@ -2341,7 +2373,7 @@ The system interfaces with:
 5. Save Exam Term
 
 **Step 2: Define Marks Distribution**
-1. Navigate to: Exams → Exam Terms → [Select Term] → Marks Distribution
+1. Navigate to: Exams -> Exam Terms -> [Select Term] -> Marks Distribution
 2. Select Class
 3. For each Subject:
    - Select Subject
@@ -2364,7 +2396,7 @@ The system interfaces with:
    - Verify total marks consistency
 
 **Step 3: Create Exam Routine**
-1. Navigate to: Exams → Exam Terms → [Select Term] → Exam Routine
+1. Navigate to: Exams -> Exam Terms -> [Select Term] -> Exam Routine
 2. Select Class
 3. Add Exam Schedule:
    - Click "Add Exam"
@@ -2385,7 +2417,7 @@ The system interfaces with:
    - Make adjustments if needed
 
 **Step 4: Create Room/Seat Plan**
-1. Navigate to: Exams → Exam Terms → [Select Term] → Room Plan
+1. Navigate to: Exams -> Exam Terms -> [Select Term] -> Room Plan
 2. Select Exam Date and Subject
 3. Allocate Rooms:
    - View available rooms
@@ -2417,7 +2449,7 @@ The system interfaces with:
    - Print seat plan diagram
 
 **Step 5: Assign Invigilators**
-1. Navigate to: Exams → Exam Terms → [Select Term] → Invigilator Assignment
+1. Navigate to: Exams -> Exam Terms -> [Select Term] -> Invigilator Assignment
 2. Select Exam Date and Room
 3. View Available Invigilators:
    - Staff members available during exam time
@@ -2444,7 +2476,7 @@ The system interfaces with:
    - Verify room assignments
    - Confirm invigilator assignments
 2. Publish Schedule:
-   - Navigate to: Exams → Exam Terms → [Select Term] → Publish
+   - Navigate to: Exams -> Exam Terms -> [Select Term] -> Publish
    - Click "Publish Schedule"
    - Set publish date
 3. System Actions:
@@ -2456,7 +2488,7 @@ The system interfaces with:
    - Creates schedule snapshot
 
 **Step 7: Generate Admit Cards**
-1. Navigate to: Exams → Exam Terms → [Select Term] → Admit Cards
+1. Navigate to: Exams -> Exam Terms -> [Select Term] -> Admit Cards
 2. Select Class/Section
 3. Generate Admit Cards:
    - Click "Generate Admit Cards"
@@ -2511,7 +2543,7 @@ The system interfaces with:
 
 **Step 1: Individual Marks Entry**
 1. Teacher logs in
-2. Navigate to: Exams → Marks Entry → Enter Marks
+2. Navigate to: Exams -> Marks Entry -> Enter Marks
 3. Select Exam Term
 4. Select Class and Section
 5. Select Subject
@@ -2535,7 +2567,7 @@ The system interfaces with:
    - If invalid: Error messages shown
 
 **Step 2: Bulk Marks Entry (Excel Import)**
-1. Navigate to: Exams → Marks Entry → Bulk Import
+1. Navigate to: Exams -> Marks Entry -> Bulk Import
 2. Download Template:
    - Click "Download Excel Template"
    - Template contains:
@@ -2567,10 +2599,10 @@ The system interfaces with:
 **Step 3: Marks Validation**
 1. System automatically validates:
    - Maximum marks check:
-     * Each component ≤ maximum marks
-     * Total ≤ subject total marks
+     * Each component <= maximum marks
+     * Total <= subject total marks
    - Negative marks prevention:
-     * All marks ≥ 0
+     * All marks >= 0
    - Required field validation:
      * All components filled (if required)
 2. View Validation Errors:
@@ -2584,7 +2616,7 @@ The system interfaces with:
 
 **Step 4: Submit Marks**
 1. After all marks entered and validated:
-   - Navigate to: Exams → Marks Entry → Submit Marks
+   - Navigate to: Exams -> Marks Entry -> Submit Marks
    - Select Exam Term, Class, Subject
 2. Review Marks:
    - View all entered marks
@@ -2603,12 +2635,12 @@ The system interfaces with:
 
 **Step 5: Unlock Request (if correction needed)**
 1. If marks need correction after submission:
-   - Navigate to: Exams → Marks Entry → Unlock Request
+   - Navigate to: Exams -> Marks Entry -> Unlock Request
    - Select submitted marks
    - Enter reason for unlock
    - Submit unlock request
 2. Exam Controller Reviews:
-   - Navigate to: Exams → Marks Entry → Unlock Requests
+   - Navigate to: Exams -> Marks Entry -> Unlock Requests
    - View pending requests
    - Review reason
 3. Approve/Reject:
@@ -2626,7 +2658,7 @@ The system interfaces with:
    - System locks again
 
 **Step 6: Verification Process**
-1. Exam Controller accesses: Exams → Marks Entry → Verification
+1. Exam Controller accesses: Exams -> Marks Entry -> Verification
 2. View Submitted Marks:
    - Filter by:
      * Exam Term
@@ -2656,7 +2688,7 @@ The system interfaces with:
 
 **Step 7: Recheck/Approval Process**
 1. If marks need correction after verification:
-   - Navigate to: Exams → Marks Entry → Correction Request
+   - Navigate to: Exams -> Marks Entry -> Correction Request
    - Select marks to correct
    - Enter correction details:
      * Student
@@ -2677,10 +2709,10 @@ The system interfaces with:
    - All changes logged:
      * Who made change
      * When changed
-     * What changed (old → new)
+     * What changed (old -> new)
      * Reason for change
    - View audit log:
-     * Navigate to: Exams → Audit Log
+     * Navigate to: Exams -> Audit Log
      * Filter by student/subject/date
 
 **Acceptance Criteria**:
@@ -2715,6 +2747,52 @@ The system interfaces with:
    - Re-issue corrected report cards
    - Audit trail
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Configure Result Rules**
+1. Exam Controller logs in
+2. Navigate to: Exams -> Result Settings
+3. Select exam term and class
+4. Configure grading scale, GPA rules, and optional subject rules
+5. Save settings
+
+**Step 2: Run Result Generation**
+1. Navigate to: Exams -> Results -> Generate
+2. Select exam term and class/section
+3. Click "Generate Results"
+4. System calculates:
+   - Total marks
+   - Grade and GPA
+   - Pass/fail status
+
+**Step 3: Validate Results**
+1. Review result summary and anomalies
+2. Check for missing marks or invalid totals
+3. Re-run generation if corrections were made
+
+**Step 4: Approve Results**
+1. Submit results for approval
+2. Principal/Exam Controller reviews and approves
+3. System locks results after approval
+
+**Step 5: Publish Results**
+1. Navigate to: Exams -> Results -> Publish
+2. Select classes and publish date
+3. Enable student/parent portal visibility
+4. Send notifications (optional)
+
+**Step 6: Generate Reports**
+1. Generate report cards and transcripts
+2. Generate merit list, fail list, and analytics
+3. Export to PDF/Excel for printing
+
+**Step 7: Recheck/Correction Workflow**
+1. Accept recheck requests (if enabled)
+2. Record changes and approvals
+3. Regenerate affected results
+4. Update audit trail
+
+
 **Acceptance Criteria**:
 - Results are calculated accurately
 - Publishing is controlled and secure
@@ -2739,6 +2817,38 @@ The system interfaces with:
    - Handle repeat students
    - Generate enrollment lists
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Define Promotion Rules**
+1. Academic Admin logs in
+2. Navigate to: Academics -> Promotion Rules
+3. Select class and session
+4. Define pass criteria and subject requirements
+5. Save rules
+
+**Step 2: Run Promotion**
+1. Navigate to: Academics -> Promotions -> Run
+2. Select session and class
+3. Click "Run Promotion"
+4. System calculates promotion status for each student
+
+**Step 3: Review Exceptions**
+1. Review list of students marked for repeat/retake
+2. Apply overrides (if policy allows)
+3. Record reasons for overrides
+
+**Step 4: Assign New Class/Section**
+1. Allocate promoted students to new classes/sections
+2. Generate new roll numbers (auto/manual)
+3. Confirm class strength limits
+
+**Step 5: Confirm Transition**
+1. Lock previous session records
+2. Activate new academic session
+3. Notify students and parents (optional)
+4. Generate promotion summary report
+
+
 **Acceptance Criteria**:
 - Promotion rules are applied consistently
 - Student data is migrated correctly
@@ -2760,7 +2870,7 @@ The system interfaces with:
 
 **Step 1: Create Fee Heads**
 1. Login as Accountant or Admin
-2. Navigate to: Fees → Fee Setup → Fee Heads
+2. Navigate to: Fees -> Fee Setup -> Fee Heads
 3. Click "Add New Fee Head"
 4. Enter Fee Head Details:
    - Fee Head Name (e.g., "Tuition Fee", "Exam Fee")
@@ -2792,7 +2902,7 @@ The system interfaces with:
    - Other fees (as needed)
 
 **Step 2: Setup Class-wise Fee Structure**
-1. Navigate to: Fees → Fee Setup → Class Fee Structure
+1. Navigate to: Fees -> Fee Setup -> Class Fee Structure
 2. Select Academic Session
 3. Select Class
 4. For each Fee Head:
@@ -2816,7 +2926,7 @@ The system interfaces with:
 8. Repeat for all classes
 
 **Step 3: Setup Category-wise Fee Structure**
-1. Navigate to: Fees → Fee Setup → Category Fee Structure
+1. Navigate to: Fees -> Fee Setup -> Category Fee Structure
 2. Create Fee Categories:
    - Full Fee (no discount)
    - Scholarship Category 1 (e.g., 50% discount)
@@ -2832,7 +2942,7 @@ The system interfaces with:
 4. Save Categories
 
 **Step 4: Setup Scholarship/Waiver Rules**
-1. Navigate to: Fees → Fee Setup → Scholarships/Waivers
+1. Navigate to: Fees -> Fee Setup -> Scholarships/Waivers
 2. Create Scholarship Rule:
    - Rule Name (e.g., "Merit Scholarship")
    - Rule Type:
@@ -2859,7 +2969,7 @@ The system interfaces with:
 8. Repeat for all scholarship types
 
 **Step 5: Setup Fine Rules**
-1. Navigate to: Fees → Fee Setup → Fine Rules
+1. Navigate to: Fees -> Fee Setup -> Fine Rules
 2. Create Fine Rule:
    - Rule Name (e.g., "Late Payment Fine")
    - Fine Type:
@@ -2884,7 +2994,7 @@ The system interfaces with:
 7. Save Fine Rule
 
 **Step 6: Setup Installment Plans**
-1. Navigate to: Fees → Fee Setup → Installment Plans
+1. Navigate to: Fees -> Fee Setup -> Installment Plans
 2. Create Installment Plan:
    - Plan Name (e.g., "Monthly Installment")
    - Number of Installments (e.g., 12 for monthly)
@@ -2927,7 +3037,7 @@ The system interfaces with:
      * Applies fines (if applicable)
      * Generates invoice
 3. View Generated Invoices:
-   - Navigate to: Fees → Invoices → View All
+   - Navigate to: Fees -> Invoices -> View All
    - Filter by:
      * Class
      * Section
@@ -2935,7 +3045,7 @@ The system interfaces with:
      * Payment Status
 
 **Step 2: Manual Invoice Generation (if needed)**
-1. Navigate to: Fees → Invoices → Generate Invoice
+1. Navigate to: Fees -> Invoices -> Generate Invoice
 2. Select Student(s):
    - Individual student
    - Bulk by class/section
@@ -2995,7 +3105,7 @@ The system interfaces with:
    - Parent can view and download invoice
 
 **Step 5: Invoice Customization**
-1. Navigate to: Fees → Settings → Invoice Template
+1. Navigate to: Fees -> Settings -> Invoice Template
 2. Customize Invoice Template:
    - Upload School Logo
    - Set Header Text
@@ -3140,6 +3250,59 @@ The system interfaces with:
 9. Bank book
 10. Custom date range reports
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Configure Chart of Accounts (COA)**
+1. Accountant logs in
+2. Navigate to: Accounting -> COA
+3. Create account groups (Assets, Liabilities, Income, Expense, Equity)
+4. Add ledger accounts under each group
+5. Save COA
+
+**Step 2: Set Fiscal Year and Opening Balances**
+1. Navigate to: Accounting -> Fiscal Year
+2. Define start/end dates
+3. Enter opening balances for accounts
+4. Save and lock opening balances
+
+**Step 3: Create Vouchers**
+1. Navigate to: Accounting -> Vouchers
+2. Select voucher type (JV/PV/RV/CV)
+3. Enter voucher details:
+   - Date
+   - Account heads
+   - Amounts
+   - Narration
+4. Attach supporting documents (optional)
+5. Save voucher (draft)
+
+**Step 4: Approve and Post Vouchers**
+1. Submit voucher for approval
+2. Approver reviews and approves/rejects
+3. On approval, system posts to ledger
+4. Audit trail is updated
+
+**Step 5: Bank Reconciliation**
+1. Navigate to: Accounting -> Bank Reconciliation
+2. Import bank statement or enter manually
+3. Match transactions
+4. Post adjustments for unmatched entries
+5. Save reconciliation report
+
+**Step 6: Generate Financial Reports**
+1. Navigate to: Accounting -> Reports
+2. Select report type (Trial Balance, P&L, Balance Sheet)
+3. Set date range and filters
+4. Generate report
+5. Export to PDF/Excel
+
+**Step 7: Period Closing**
+1. Review all pending vouchers
+2. Post adjustments and accruals
+3. Close period and lock entries
+4. Generate closing summary
+
+
 **Acceptance Criteria**:
 - All accounting principles are followed
 - Reports are accurate and auditable
@@ -3169,6 +3332,39 @@ The system interfaces with:
 4. Staff documents management
 5. Staff search and filtering
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Configure HR Master Data**
+1. HR logs in
+2. Navigate to: HR -> Settings
+3. Create departments, designations, and grade levels
+4. Configure employment types (permanent/contract)
+5. Save settings
+
+**Step 2: Add Staff Profile**
+1. Navigate to: HR -> Staff -> Add New
+2. Enter personal details, contact info, and IDs
+3. Upload documents (photo, CV, certificates)
+4. Enter employment details:
+   - Department
+   - Designation
+   - Joining date
+   - Salary grade
+5. Save staff profile
+
+**Step 3: Assign Roles and Access**
+1. Navigate to: Settings -> Users & Roles
+2. Create user account for staff
+3. Assign role(s) and permissions
+4. Save and notify staff
+
+**Step 4: Manage Staff Lifecycle**
+1. Record probation confirmation
+2. Update promotions or transfers
+3. Record resignations/termination
+4. Archive inactive staff records
+
+
 **Acceptance Criteria**:
 - Staff profiles are complete and searchable
 - Document management is efficient
@@ -3197,6 +3393,40 @@ The system interfaces with:
 5. Attendance integration:
    - Automatic attendance update
    - Leave balance update
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Configure Leave Types**
+1. HR logs in
+2. Navigate to: HR -> Leave -> Types
+3. Create leave types (casual, sick, earned, etc.)
+4. Set annual balance, carry forward rules, and eligibility
+5. Save leave types
+
+**Step 2: Assign Leave Balances**
+1. Navigate to: HR -> Leave -> Balances
+2. Select staff or staff group
+3. Assign opening balances
+4. Save balances
+
+**Step 3: Staff Applies for Leave**
+1. Staff logs in
+2. Navigate to: HR -> Leave -> Apply
+3. Select leave type and date range
+4. Add reason and attachments (optional)
+5. Submit request
+
+**Step 4: Approve/Reject Leave**
+1. Manager/HR reviews request
+2. Check balance and overlaps
+3. Approve or reject with remarks
+4. System updates leave balance
+
+**Step 5: Update Attendance and Payroll**
+1. Approved leave updates attendance records
+2. Payroll picks up leave deductions (if any)
+3. Generate leave report
+
 
 **Acceptance Criteria**:
 - Leave balances are accurate
@@ -3233,6 +3463,45 @@ The system interfaces with:
    - Tax reports
    - PF reports
    - Loan deduction reports
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Configure Salary Structure**
+1. HR/Accounts logs in
+2. Navigate to: HR -> Payroll -> Salary Structure
+3. Define salary components:
+   - Basic
+   - Allowances
+   - Deductions
+4. Assign structure to staff
+5. Save configuration
+
+**Step 2: Prepare Payroll**
+1. Navigate to: HR -> Payroll -> Run Payroll
+2. Select payroll period
+3. Import attendance, overtime, and leave data
+4. System calculates gross and net salary
+
+**Step 3: Review Payroll Sheet**
+1. Review staff-wise calculations
+2. Edit adjustments or bonuses (if authorized)
+3. Validate totals
+
+**Step 4: Approve Payroll**
+1. Submit payroll for approval
+2. Approver reviews and approves
+3. System locks payroll for the period
+
+**Step 5: Generate Payslips**
+1. Navigate to: HR -> Payroll -> Payslips
+2. Generate payslips for all staff
+3. Distribute via portal/email
+
+**Step 6: Disbursement and Posting**
+1. Record salary payment (bank/cash)
+2. Post to accounting ledger
+3. Generate payroll summary report
+
 
 **Acceptance Criteria**:
 - Salary calculations are accurate
@@ -3273,6 +3542,49 @@ The system interfaces with:
    - Link to accounting (PV)
    - Payment tracking
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Raise Purchase Requisition (PR)**
+1. Department user logs in
+2. Navigate to: Inventory -> Procurement -> PR
+3. Enter item, quantity, and required date
+4. Submit PR for approval
+
+**Step 2: Approve PR**
+1. Approver reviews PR
+2. Approve or reject with remarks
+3. System notifies requester
+
+**Step 3: Create Purchase Order (PO)**
+1. Store/Accounts user opens approved PR
+2. Select supplier and create PO
+3. Set delivery date and terms
+4. Send PO to supplier
+
+**Step 4: Receive Goods (GRN)**
+1. Receive items from supplier
+2. Navigate to: Inventory -> GRN
+3. Match PO items and quantities
+4. Record received quantities and quality check
+5. Save GRN and update stock
+
+**Step 5: Record Supplier Invoice**
+1. Enter supplier invoice details
+2. Match invoice with PO/GRN
+3. Record tax and discounts
+4. Save invoice
+
+**Step 6: Make Payment**
+1. Create payment voucher
+2. Approve payment
+3. Record payment and update ledger
+
+**Step 7: Procurement Reporting**
+1. Generate PR/PO/GRN reports
+2. Track supplier performance
+3. Review pending orders
+
+
 **Acceptance Criteria**:
 - Complete procurement cycle is tracked
 - Stock is updated automatically
@@ -3309,6 +3621,44 @@ The system interfaces with:
    - Department-wise consumption
    - Low stock report
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Item Master Setup**
+1. Store user logs in
+2. Navigate to: Inventory -> Items
+3. Create item categories and units
+4. Add items with reorder levels
+5. Save item master
+
+**Step 2: Record Stock In**
+1. Navigate to: Inventory -> Stock In
+2. Select source (GRN or direct receipt)
+3. Enter quantities and batch details
+4. Save and update stock
+
+**Step 3: Issue Stock Out**
+1. Navigate to: Inventory -> Issue
+2. Select department and items
+3. Enter quantities
+4. Save issue slip and update stock
+
+**Step 4: Stock Return and Adjustment**
+1. Record returns from departments
+2. Enter adjustments for damaged/expired items
+3. Save and update stock
+
+**Step 5: Stock Audit**
+1. Perform periodic stock count
+2. Compare physical vs system quantities
+3. Record variances and approvals
+4. Generate stock audit report
+
+**Step 6: Reorder Alerts**
+1. System monitors stock levels
+2. Generate low stock alerts
+3. Create PR from alert
+
+
 **Acceptance Criteria**:
 - Stock levels are accurate
 - Alerts are timely
@@ -3344,6 +3694,43 @@ The system interfaces with:
    - Disposal value
    - Accounting integration
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Asset Category Setup**
+1. Admin logs in
+2. Navigate to: Assets -> Categories
+3. Create asset categories and depreciation rules (optional)
+4. Save categories
+
+**Step 2: Register Asset**
+1. Navigate to: Assets -> Register
+2. Enter asset details (name, serial, purchase date, cost)
+3. Upload purchase documents
+4. Assign asset to location or staff
+5. Save asset
+
+**Step 3: Asset Allocation and Tracking**
+1. Track asset custody changes
+2. Record transfers between rooms/staff
+3. Update asset status (active/repair/disposed)
+
+**Step 4: Maintenance Management**
+1. Schedule maintenance
+2. Record service history and costs
+3. Set next service date
+
+**Step 5: Depreciation (Optional)**
+1. Run depreciation calculation
+2. Post depreciation entries to accounting
+3. Generate depreciation report
+
+**Step 6: Asset Disposal**
+1. Initiate disposal request
+2. Approve disposal
+3. Record disposal method and value
+4. Archive asset record
+
+
 **Acceptance Criteria**:
 - Assets are tracked throughout lifecycle
 - Maintenance schedules are followed
@@ -3377,6 +3764,44 @@ The system interfaces with:
    - Member-wise issue history
    - Popular books report
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Library Setup**
+1. Librarian logs in
+2. Navigate to: Library -> Settings
+3. Configure loan periods and fine rules
+4. Save settings
+
+**Step 2: Catalog Books**
+1. Navigate to: Library -> Catalog
+2. Add book details (title, author, ISBN)
+3. Add copies and barcode numbers
+4. Save catalog
+
+**Step 3: Issue Books**
+1. Navigate to: Library -> Issue
+2. Search student/staff
+3. Scan barcode and issue book
+4. Set due date
+5. Save transaction
+
+**Step 4: Return and Renewal**
+1. Scan returned book
+2. System calculates fine if overdue
+3. Collect fine or waive (if authorized)
+4. Renew if requested
+
+**Step 5: Reservations**
+1. Place reservation for unavailable book
+2. Notify user when available
+3. Process reservation issue
+
+**Step 6: Reports**
+1. Generate overdue list
+2. Inventory and circulation reports
+3. Export reports
+
+
 **Acceptance Criteria**:
 - Book tracking is accurate
 - Fines are calculated correctly
@@ -3407,6 +3832,37 @@ The system interfaces with:
    - Driver check-in/out
    - Route completion logs
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Setup Transport Master Data**
+1. Transport Manager logs in
+2. Navigate to: Transport -> Setup
+3. Add vehicles, routes, stops, and drivers
+4. Save transport master data
+
+**Step 2: Assign Students to Routes**
+1. Navigate to: Transport -> Student Allocation
+2. Select student and route/stop
+3. Assign pickup/drop timings
+4. Save allocation
+
+**Step 3: Generate Transport Fees**
+1. Navigate to: Transport -> Billing
+2. Set route-wise fees
+3. Generate monthly/term transport invoices
+4. Post fees to student ledger
+
+**Step 4: Daily Route Management**
+1. Record driver attendance
+2. Track route completion (optional)
+3. Log delays or incidents
+
+**Step 5: Reports**
+1. Generate route-wise student list
+2. Vehicle maintenance and fuel reports
+3. Transport fee collection report
+
+
 **Acceptance Criteria**:
 - Route allocation is efficient
 - Transport fees are billed correctly
@@ -3436,6 +3892,38 @@ The system interfaces with:
    - Meal attendance
    - Meal cost tracking
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Hostel Setup**
+1. Hostel Manager logs in
+2. Navigate to: Hostel -> Setup
+3. Add hostels, floors, rooms, and bed capacity
+4. Set hostel rules and fees
+5. Save setup
+
+**Step 2: Allocate Rooms/Beds**
+1. Navigate to: Hostel -> Allocation
+2. Select student and available bed
+3. Assign check-in date
+4. Save allocation
+
+**Step 3: Hostel Billing**
+1. Navigate to: Hostel -> Billing
+2. Generate hostel fee invoices
+3. Post to student ledger
+
+**Step 4: Check-out and Transfers**
+1. Process check-out request
+2. Verify clearance (fees, damages)
+3. Update bed status
+4. Record transfer if moving rooms
+
+**Step 5: Visitor Log and Discipline**
+1. Log visitor entry/exit
+2. Record hostel discipline incidents
+3. Generate hostel reports
+
+
 **Acceptance Criteria**:
 - Room allocation is efficient
 - Hostel fees are billed correctly
@@ -3459,6 +3947,38 @@ The system interfaces with:
    - Daily sales
    - Item-wise sales
    - Revenue reports
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Item and Pricing Setup**
+1. Canteen Manager logs in
+2. Navigate to: POS -> Items
+3. Add items, categories, and prices
+4. Configure taxes and discounts
+5. Save items
+
+**Step 2: Stock Management**
+1. Record stock purchases
+2. Update stock quantities
+3. Set low stock alerts
+
+**Step 3: Sales Transaction**
+1. Open POS screen
+2. Scan/select items
+3. Apply discounts (if allowed)
+4. Accept payment (cash/card/wallet)
+5. Print or send receipt
+
+**Step 4: Refunds and Void**
+1. Search transaction
+2. Process refund or void with reason
+3. Update stock and ledger
+
+**Step 5: Day Closing**
+1. Reconcile cash drawer
+2. Generate daily sales report
+3. Close day and lock transactions
+
 
 **Acceptance Criteria**:
 - Sales are tracked accurately
@@ -3485,11 +4005,51 @@ The system interfaces with:
    - WhatsApp broadcast (optional)
    - Portal notification
 3. Two-way messaging:
-   - Teacher ↔ Parent messaging
-   - Admin ↔ Staff messaging
+   - Teacher <-> Parent messaging
+   - Admin <-> Staff messaging
    - Message threads
    - Read receipts
    - Message logs
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Create Notice/Message**
+1. Admin/Teacher logs in
+2. Navigate to: Communication -> Notices
+3. Click "Create New"
+4. Enter title and message content
+5. Attach files (optional)
+
+**Step 2: Select Audience**
+1. Choose target audience:
+   - All users
+   - Specific roles
+   - Specific classes/sections
+2. Apply filters as needed
+
+**Step 3: Choose Channels**
+1. Select delivery channels:
+   - In-app
+   - Email
+   - SMS
+   - WhatsApp (optional)
+2. Choose template if required
+
+**Step 4: Schedule and Send**
+1. Send immediately or schedule later
+2. Click "Send"
+3. System logs delivery status
+
+**Step 5: Track Delivery**
+1. View sent messages
+2. Check delivery success/failure
+3. Retry failed messages if needed
+
+**Step 6: Two-way Messaging (Optional)**
+1. Enable replies for targeted messages
+2. Review responses
+3. Export conversation logs
+
 
 **Acceptance Criteria**:
 - Notices reach intended audience
@@ -3518,6 +4078,38 @@ The system interfaces with:
    - Incoming/outgoing register
    - Delivery tracking
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Visitor Entry**
+1. Front Desk logs in
+2. Navigate to: Front Desk -> Visitors
+3. Enter visitor details and purpose
+4. Capture ID proof and photo
+5. Assign person to visit and issue visitor pass
+
+**Step 2: Visitor Exit**
+1. Record exit time on return
+2. Retrieve pass and close visit record
+
+**Step 3: Student Gate Pass**
+1. Navigate to: Front Desk -> Gate Pass
+2. Select student and reason
+3. Record guardian details and pickup time
+4. Issue gate pass
+5. Close pass on student exit
+
+**Step 4: Dispatch/Receiving Log**
+1. Navigate to: Front Desk -> Dispatch/Receiving
+2. Record courier details and tracking number
+3. Update received status
+4. Generate dispatch report
+
+**Step 5: Reports**
+1. Generate visitor logs by date
+2. Export gate pass records
+3. Review security incidents
+
+
 **Acceptance Criteria**:
 - Visitor records are complete
 - Gate passes are tracked
@@ -3541,6 +4133,37 @@ The system interfaces with:
    - Achievement records
    - Certificates
    - Awards
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Create Event or Club**
+1. Admin/Teacher logs in
+2. Navigate to: Activities -> Events/Clubs
+3. Click "Create New"
+4. Enter event/club details, dates, and organizer
+5. Save
+
+**Step 2: Register Participants**
+1. Open event/club record
+2. Select eligible classes/roles
+3. Add participants or allow self-registration
+4. Capture consent if required
+
+**Step 3: Schedule and Announce**
+1. Publish event schedule
+2. Send notices to participants
+3. Reserve rooms/resources (if needed)
+
+**Step 4: Record Attendance and Outcomes**
+1. Take attendance on event day
+2. Record results, awards, or achievements
+3. Upload photos or documents (optional)
+
+**Step 5: Close and Report**
+1. Close event
+2. Generate participation and achievement reports
+3. Archive event record
+
 
 **Acceptance Criteria**:
 - Events are well-organized
@@ -3578,6 +4201,38 @@ The system interfaces with:
 5. Archive:
    - Historical certificate archive
    - Search and retrieval
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Configure Templates**
+1. Admin logs in
+2. Navigate to: Certificates -> Templates
+3. Create or upload template
+4. Map fields (student name, ID, dates)
+5. Save template
+
+**Step 2: Configure Numbering**
+1. Navigate to: Certificates -> Settings
+2. Set certificate numbering format
+3. Enable unique number validation
+
+**Step 3: Generate Certificate**
+1. Navigate to: Certificates -> Generate
+2. Select student(s) and certificate type
+3. Preview certificate
+4. Submit for approval (if required)
+
+**Step 4: Approve and Issue**
+1. Approver reviews request
+2. Approve or reject with remarks
+3. System generates certificate number
+4. Print or export PDF
+
+**Step 5: Verification and Archive**
+1. Store certificate in document vault
+2. Enable QR verification (optional)
+3. Maintain audit log
+
 
 **Acceptance Criteria**:
 - Certificates are professional and accurate
@@ -3626,6 +4281,29 @@ The system interfaces with:
    - Exam results
    - Notices
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Configure Dashboard Widgets**
+1. Admin logs in
+2. Navigate to: Reports -> Dashboards -> Settings
+3. Assign widgets per role
+4. Save configuration
+
+**Step 2: Access Dashboard**
+1. User logs in
+2. System loads role-specific dashboard
+3. User views KPIs and summaries
+
+**Step 3: Filter and Drill Down**
+1. Apply filters (date/class/department)
+2. Click widget to open detailed report
+3. Export if needed
+
+**Step 4: Personalization (Optional)**
+1. User rearranges widgets
+2. Save layout preferences
+
+
 **Acceptance Criteria**:
 - Dashboards load quickly
 - Data is accurate and real-time
@@ -3671,6 +4349,29 @@ The system interfaces with:
    - Filter options
    - Column selection
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Select Report**
+1. User navigates to: Reports
+2. Select report category and type
+3. Open report parameters
+
+**Step 2: Apply Filters**
+1. Set date range, class, section, or department
+2. Apply status filters (paid/unpaid, active/inactive)
+3. Click "Generate"
+
+**Step 3: Review Report**
+1. Review totals and data accuracy
+2. Drill down to detail rows
+3. Save report view (optional)
+
+**Step 4: Export or Schedule**
+1. Export to PDF/Excel/CSV
+2. Schedule report delivery (optional)
+3. System logs export activity
+
+
 **Acceptance Criteria**:
 - Reports are accurate
 - Exports work correctly
@@ -3691,6 +4392,29 @@ The system interfaces with:
 4. Generate certificates for graduates
 5. Move graduates to Alumni module
 6. Archive academic data
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Finalize Results**
+1. Exam Controller confirms all results published
+2. Lock result edits
+3. Generate final report cards
+
+**Step 2: Complete Promotions**
+1. Run promotion process
+2. Review exceptions
+3. Confirm class allocations
+
+**Step 3: Archive Session Data**
+1. Lock attendance, exams, and marks
+2. Create session archive snapshot
+3. Store archives per retention policy
+
+**Step 4: Generate Final Documents**
+1. Generate transcripts and certificates
+2. Move graduates to alumni
+3. Publish session closing report
+
 
 **Acceptance Criteria**:
 - Data is locked correctly
@@ -3716,6 +4440,29 @@ The system interfaces with:
    - Opening balances
    - New period setup
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Reconcile Fees and Accounts**
+1. Verify all fee invoices and receipts
+2. Resolve pending dues or adjustments
+3. Reconcile cash and bank balances
+
+**Step 2: Post Adjustments**
+1. Record accruals and provisions
+2. Post adjusting entries
+3. Review ledger balances
+
+**Step 3: Close Financial Period**
+1. Generate trial balance
+2. Review and approve P&L and Balance Sheet
+3. Close period and lock vouchers
+
+**Step 4: Carry Forward Balances**
+1. Roll forward opening balances
+2. Start new fiscal year
+3. Generate finance closing report
+
+
 **Acceptance Criteria**:
 - Financial closing is accurate
 - Period locks are enforced
@@ -3730,6 +4477,30 @@ The system interfaces with:
 2. Archive old academic data
 3. Backup final snapshot
 4. Reset sequences (optional, for new year)
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Prepare Archival Scope**
+1. Admin logs in
+2. Navigate to: Settings -> Archival
+3. Select academic/financial period
+4. Review data size and retention rules
+
+**Step 2: Generate Archive**
+1. Create archive snapshot
+2. Verify archive integrity
+3. Store archive to backup location
+
+**Step 3: Verify Restore**
+1. Perform test restore in staging
+2. Validate data consistency
+3. Document restore verification
+
+**Step 4: Purge (If Allowed)**
+1. Purge data per policy after archive
+2. Log purge actions
+3. Generate archival report
+
 
 **Acceptance Criteria**:
 - Archival process is automated
@@ -3760,6 +4531,30 @@ The system interfaces with:
 4. Alumni communication:
    - Newsletter
    - Event invitations
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Convert Graduates to Alumni**
+1. Academic Admin logs in
+2. Navigate to: Alumni -> Convert
+3. Select graduating batch
+4. Confirm conversion
+
+**Step 2: Maintain Alumni Profiles**
+1. Update contact and career details
+2. Manage alumni consent and visibility
+3. Upload alumni achievements
+
+**Step 3: Alumni Communication**
+1. Send announcements and newsletters
+2. Invite to events
+3. Track responses
+
+**Step 4: Alumni Reports**
+1. Generate alumni directory
+2. Export alumni data (authorized users only)
+3. Maintain audit log
+
 
 **Acceptance Criteria**:
 - Alumni data is maintained
@@ -3926,12 +4721,12 @@ The system interfaces with:
 
 ### 5.3 System Architecture Diagram
 ```
-[Users] → [Load Balancer] → [Web Servers] → [Application Servers] → [Database]
-                ↓
+[Users] -> [Load Balancer] -> [Web Servers] -> [Application Servers] -> [Database]
+                (down)
          [Cache Layer (Redis)]
-                ↓
+                (down)
          [File Storage]
-                ↓
+                (down)
          [External APIs]
 ```
 
@@ -4004,9 +4799,9 @@ The system interfaces with:
 - **Asset**: Fixed assets
 
 ### 6.2 Data Relationships
-- One-to-Many: Organization → Campuses, Class → Sections, Student → Payments
-- Many-to-Many: Student → Subjects, Teacher → Classes, Staff → Roles
-- Hierarchical: Class → Section → Group
+- One-to-Many: Organization -> Campuses, Class -> Sections, Student -> Payments
+- Many-to-Many: Student -> Subjects, Teacher -> Classes, Staff -> Roles
+- Hierarchical: Class -> Section -> Group
 
 ### 6.3 Data Validation Rules
 - **Student ID**: Unique, alphanumeric, 6-10 characters
@@ -4369,30 +5164,20 @@ The system interfaces with:
 - **WCAG**: Web Content Accessibility Guidelines
 - **XSS**: Cross-Site Scripting
 
-### 14.3 Use Case Diagrams (To be created)
-- Student Admission Use Case
-- Fee Payment Use Case
-- Exam Management Use Case
-- Attendance Management Use Case
-- Payroll Processing Use Case
+### 14.3 Use Case Diagrams (Provided as separate deliverables)
+Use case diagrams will be maintained as separate artifacts linked from the project documentation set.
 
-### 14.4 Entity Relationship Diagram (To be created)
-- Complete ERD showing all entities and relationships
+### 14.4 Entity Relationship Diagram (Provided as separate deliverables)
+The ERD will be maintained as a separate artifact linked from the project documentation set.
 
-### 14.5 Data Flow Diagrams (To be created)
-- Admission Process Data Flow
-- Fee Payment Data Flow
-- Exam Result Processing Data Flow
+### 14.5 Data Flow Diagrams (Provided as separate deliverables)
+Data flow diagrams will be maintained as separate artifacts linked from the project documentation set.
 
-### 14.6 Sequence Diagrams (To be created)
-- Student Admission Sequence
-- Fee Payment Sequence
-- Marks Entry and Result Generation Sequence
+### 14.6 Sequence Diagrams (Provided as separate deliverables)
+Sequence diagrams will be maintained as separate artifacts linked from the project documentation set.
 
-### 14.7 Screen Mockups (To be created)
-- Dashboard mockups for each role
-- Key form mockups
-- Report mockups
+### 14.7 Screen Mockups (Provided as separate deliverables)
+Screen mockups will be maintained as separate artifacts linked from the project documentation set.
 
 ### 14.8 Original Workflow Document (Reference)
 
@@ -4434,7 +5219,7 @@ You can use this as your final master workflow for SRS + development.
 **1) Academic Year / Session Setup (Academic Admin)**
 1. Create Academic Session (e.g., 2026).
 2. Setup academic structure:
-   - Class/Grade → Section → Group/Stream
+   - Class/Grade -> Section -> Group/Stream
 3. Setup subjects:
    - compulsory/optional, components (CQ/MCQ/Practical), marks rules, pass marks
 4. Setup departments (Science/Arts etc. + staff departments).
@@ -4450,7 +5235,7 @@ You can use this as your final master workflow for SRS + development.
 2. Configure application form fields (online/offline).
 3. Set admission test/interview rules (optional).
 
-**2.2 Application → Verification**
+**2.2 Application -> Verification**
 1. Applicant submits form + documents.
 2. System generates Application ID.
 3. Officer verifies documents + eligibility checklist.
@@ -4475,9 +5260,9 @@ You can use this as your final master workflow for SRS + development.
 
 **3) Student Lifecycle Management (Academic Admin + Front Desk)**
 1. Student status lifecycle:
-   - Applicant → Enrolled → Active → Promoted/Repeat → Transfer/Withdraw → Alumni
+   - Applicant -> Enrolled -> Active -> Promoted/Repeat -> Transfer/Withdraw -> Alumni
 2. Transfer/Withdraw workflow:
-   - TC request → clearance checks (fees/library/hostel/transport) → approvals → TC issued → status changed
+   - TC request -> clearance checks (fees/library/hostel/transport) -> approvals -> TC issued -> status changed
 3. Re-admission workflow (if returning).
 
 ---
@@ -4492,7 +5277,7 @@ You can use this as your final master workflow for SRS + development.
 **4.2 Substitute Teacher Workflow (Standard)**
 1. Teacher marks leave/unavailability.
 2. System suggests available substitute teachers.
-3. Admin assigns substitute → routine updates for that day.
+3. Admin assigns substitute -> routine updates for that day.
 
 **4.3 Class Diary / Lesson Delivered (Standard)**
 1. Teacher logs daily lesson delivered (chapter/topic).
@@ -4523,7 +5308,7 @@ You can use this as your final master workflow for SRS + development.
 3. Teacher reviews, grades, feedback.
 4. Parents see progress.
 5. (Optional) Quiz/online test module:
-   - MCQ quiz → auto grade → report.
+   - MCQ quiz -> auto grade -> report.
 
 ---
 
@@ -4552,7 +5337,7 @@ You can use this as your final master workflow for SRS + development.
 
 **9) Marks Entry & Verification (Teachers + Exam Controller)**
 1. Teacher enters marks (component-wise).
-2. Submit marks → lock after submission.
+2. Submit marks -> lock after submission.
 3. Controller checks missing/invalid entries.
 4. Recheck/approval process (optional).
 
@@ -4594,7 +5379,7 @@ You can use this as your final master workflow for SRS + development.
 2. Partial/full payment supported.
 3. Generate receipt + update student ledger.
 4. Refund workflow (standard):
-   - refund request → approval → payment out → ledger adjustment
+   - refund request -> approval -> payment out -> ledger adjustment
 
 **12.4 Dues Management**
 1. Due list by class/section/month.
@@ -4616,10 +5401,10 @@ You can use this as your final master workflow for SRS + development.
    - Expense categories
 
 **13.2 Voucher Workflow**
-1. Journal Voucher (JV) – adjustments
-2. Payment Voucher (PV) – payments/expenses
-3. Receipt Voucher (RV) – receipts other than fees
-4. Contra Voucher (CV) – bank↔cash transfer
+1. Journal Voucher (JV) - adjustments
+2. Payment Voucher (PV) - payments/expenses
+3. Receipt Voucher (RV) - receipts other than fees
+4. Contra Voucher (CV) - bank<->cash transfer
 5. Approval workflow (optional).
 
 **13.3 Bank Management**
@@ -4645,7 +5430,7 @@ You can use this as your final master workflow for SRS + development.
 
 **15) Leave Management (HR)**
 1. Leave types & balance rules.
-2. Apply leave → approval → update attendance.
+2. Apply leave -> approval -> update attendance.
 
 **16) Payroll Processing (HR + Accounts)**
 1. Salary structure setup:
@@ -4717,7 +5502,7 @@ You can use this as your final master workflow for SRS + development.
 **24) Notice & Messaging (Admin/Principal/Teacher)**
 1. Publish notices (targeted by class/role).
 2. SMS/email/WhatsApp broadcast (optional).
-3. Two-way messaging (teacher↔parent) with logs.
+3. Two-way messaging (teacher<->parent) with logs.
 
 **25) Front Desk & Gate Security (Standard in many)**
 1. Visitor management:
