@@ -541,44 +541,572 @@ The system interfaces with:
 **Sub-Requirements**:
 
 **FR-2.2.1: Admission Setup**
-1. Create admission circulars:
-   - Classes, available seats, fees, dates
-   - Application requirements
-   - Admission test/interview rules (optional)
-2. Configure application form fields (customizable)
-3. Online and offline application support
-4. Document upload requirements
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Create Admission Circular**
+1. Login as Academic Admin or Front Desk
+2. Navigate to: Admissions → Admission Circulars → Create New
+3. Enter Circular Details:
+   - Circular Title (e.g., "Admission 2026")
+   - Academic Session (select from dropdown)
+   - Start Date (application start)
+   - End Date (application deadline)
+   - Publication Date (when to publish)
+4. Select Classes for Admission:
+   - Check classes that are open for admission
+   - For each class, enter:
+     * Available Seats
+     * Reserved Seats (if any)
+     * Application Fee Amount
+5. Configure Admission Requirements:
+   - Minimum Age (if applicable)
+   - Previous Class/Grade Required
+   - Required Documents List:
+     * Birth Certificate
+     * Previous School Certificate
+     * Transfer Certificate (if applicable)
+     * Passport Size Photos (quantity)
+     * Other documents (specify)
+6. Set Admission Test/Interview Rules (if applicable):
+   - Enable Admission Test: Yes/No
+   - Test Date (if enabled)
+   - Test Duration
+   - Subjects for Test
+   - Passing Marks Criteria
+   - Enable Interview: Yes/No
+   - Interview Date (if enabled)
+7. Configure Application Form Fields:
+   - Personal Information:
+     * Student Name (required)
+     * Date of Birth (required)
+     * Gender (required)
+     * Blood Group (optional)
+     * Nationality (required)
+   - Contact Information:
+     * Address (required)
+     * Phone Number (required)
+     * Email (optional)
+   - Academic Information:
+     * Previous School Name
+     * Previous Class
+     * Previous Class Result
+   - Parent/Guardian Information:
+     * Father's Name (required)
+     * Father's Occupation
+     * Father's Phone
+     * Mother's Name (required)
+     * Mother's Occupation
+     * Mother's Phone
+     * Guardian Name (if different)
+   - Additional Fields (customizable):
+     * Add custom field
+     * Set field type (text/number/date/dropdown)
+     * Set as required/optional
+8. Set Document Upload Requirements:
+   - Enable document upload: Yes/No
+   - For each document type:
+     * Document Name
+     * Required: Yes/No
+     * File Format (PDF/JPG/PNG)
+     * Maximum File Size (e.g., 2MB)
+9. Configure Online/Offline Application:
+   - Enable Online Application: Yes/No
+   - Enable Offline Application: Yes/No
+   - If online: Set application form URL
+   - If offline: Set application form print template
+10. Set Application Fee Payment:
+    - Application Fee Amount
+    - Payment Methods (Cash/Online/Bank)
+    - Fee Refund Policy (if applicable)
+11. Review all settings
+12. Click "Save and Publish" or "Save as Draft"
+13. If published, system sends notifications (if configured)
+
+**Step 2: Configure Application Form Fields (Advanced)**
+1. Navigate to: Admissions → Settings → Form Builder
+2. View default form fields
+3. Add Custom Fields:
+   - Click "Add Field"
+   - Enter Field Label
+   - Select Field Type:
+     * Text Input
+     * Number Input
+     * Date Picker
+     * Dropdown
+     * Checkbox
+     * Radio Button
+     * Text Area
+   - Set Field Properties:
+     * Required: Yes/No
+     * Placeholder Text
+     * Default Value
+     * Validation Rules
+   - Set Field Position (drag and drop)
+4. Edit Existing Fields:
+   - Click field to edit
+   - Modify properties
+   - Save changes
+5. Delete Unwanted Fields (if not used in any application)
+6. Preview Form:
+   - Click "Preview" to see form as applicant will see
+   - Test form on mobile device
+7. Save Form Configuration
 
 **FR-2.2.2: Application Processing**
-1. Applicant submits form with documents
-2. System generates unique Application ID
-3. Document verification workflow:
-   - Eligibility checklist
-   - Document verification status
-   - Officer assignment
-4. Application status tracking
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Applicant Submits Application (Online)**
+1. Applicant accesses admission portal/website
+2. Clicks "Apply Now" or "Online Application"
+3. Selects Class for Admission
+4. Fills Application Form:
+   - Enters all required personal information
+   - Enters parent/guardian details
+   - Uploads required documents
+   - Reviews all entered information
+5. Pays Application Fee (if online payment enabled):
+   - Selects payment method
+   - Enters payment details
+   - Completes payment
+   - Receives payment confirmation
+6. Submits Application:
+   - Clicks "Submit Application"
+   - System validates all fields
+   - If validation passes: Application submitted
+   - If validation fails: Error messages shown, applicant corrects
+7. System Actions:
+   - Generates unique Application ID (format: APP-YYYY-####)
+   - Sends confirmation email/SMS to applicant
+   - Creates application record in database
+   - Sets status: "Submitted"
+
+**Step 2: Applicant Submits Application (Offline)**
+1. Applicant collects application form from school
+2. Fills form manually
+3. Attaches required documents
+4. Pays application fee (cash/bank)
+5. Submits to Front Desk:
+   - Front Desk officer receives application
+   - Verifies documents are attached
+   - Collects application fee receipt
+6. Front Desk Officer Enters Application:
+   - Navigate to: Admissions → Applications → Add New
+   - Enters all information from form
+   - Uploads scanned documents
+   - Enters payment details
+   - Generates Application ID
+   - Saves application
+7. System sets status: "Submitted"
+
+**Step 3: Document Verification**
+1. Academic Admin/Front Desk accesses: Admissions → Applications → Pending Verification
+2. Views list of submitted applications
+3. Selects application to verify
+4. Opens application details
+5. Reviews Application Information:
+   - Checks all personal details
+   - Verifies age eligibility
+   - Checks previous academic records
+6. Verifies Documents:
+   - Opens each uploaded document
+   - Checks document authenticity
+   - Verifies document quality (readable, complete)
+   - Checks document dates (if applicable)
+7. Completes Eligibility Checklist:
+   - Age requirement: Met/Not Met
+   - Previous class requirement: Met/Not Met
+   - Documents complete: Yes/No
+   - Application fee paid: Yes/No
+   - Other requirements: (specify)
+8. Makes Verification Decision:
+   - If all requirements met:
+     * Click "Approve for Next Step"
+     * Status changes to "Verified"
+     * System notifies applicant
+   - If requirements not met:
+     * Click "Reject" or "Request More Information"
+     * Enter rejection reason
+     * Status changes to "Rejected" or "Pending Documents"
+     * System notifies applicant
+9. Assigns Verification Officer (for tracking):
+   - Selects officer name
+   - System logs assignment
+10. System Actions:
+    - Updates application status
+    - Logs verification activity
+    - Sends notification to applicant
+
+**Step 4: Application Status Tracking**
+1. Applicant can track status:
+   - Login to admission portal (if online)
+   - Enter Application ID and phone number
+   - View current status
+2. System provides status updates:
+   - Submitted
+   - Under Verification
+   - Verified
+   - Rejected
+   - Selected for Test/Interview
+   - Test/Interview Completed
+   - Selected for Admission
+   - Admission Confirmed
+3. Admin can view status dashboard:
+   - Total applications
+   - Applications by status
+   - Applications by class
+   - Pending actions
 
 **FR-2.2.3: Admission Test/Interview**
-1. Create test/interview schedule
-2. Generate admit cards
-3. Enter test marks/interview scores
-4. Publish merit list and wait list
-5. Automated seat allocation (optional)
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Create Test/Interview Schedule**
+1. Navigate to: Admissions → Test/Interview → Create Schedule
+2. Select Admission Circular
+3. Create Test Schedule:
+   - Test Date
+   - Test Time
+   - Test Duration (hours)
+   - Test Venue/Location
+   - Select Classes (which classes have test)
+4. Configure Test Subjects:
+   - Add subjects for test
+   - Set marks per subject
+   - Set total marks
+   - Set passing marks
+5. Create Interview Schedule (if applicable):
+   - Interview Date
+   - Interview Time Slot Duration
+   - Interview Venue
+   - Number of Interview Panels
+6. Assign Invigilators/Interviewers:
+   - Select staff members
+   - Assign to test rooms/panels
+7. Save Schedule
+8. Publish Schedule:
+   - System notifies all verified applicants
+   - Schedule visible on admission portal
+
+**Step 2: Generate Admit Cards**
+1. Navigate to: Admissions → Test/Interview → Generate Admit Cards
+2. Select Admission Circular
+3. Select Applicants:
+   - All verified applicants (bulk)
+   - Specific applicants (individual)
+4. System Generates Admit Cards:
+   - Application ID
+   - Applicant Name
+   - Test Date and Time
+   - Test Venue
+   - Test Room/Seat Number
+   - Instructions
+   - QR Code (for verification)
+5. Review Admit Cards:
+   - Preview sample
+   - Check all information
+6. Publish Admit Cards:
+   - System generates PDF for each applicant
+   - Applicants can download from portal
+   - System sends download link via email/SMS
+7. Print Admit Cards (if needed):
+   - Bulk print option
+   - Print by class
+   - Individual print
+
+**Step 3: Conduct Test and Enter Marks**
+1. On Test Day:
+   - Applicants arrive with admit cards
+   - Verification at entrance (scan QR code)
+   - Seating arrangement
+2. After Test Completion:
+   - Collect answer sheets
+   - Evaluate answer sheets
+3. Enter Test Marks:
+   - Navigate to: Admissions → Test/Interview → Enter Marks
+   - Select Admission Circular
+   - Select Applicant
+   - Enter marks for each subject:
+     * Subject Name
+     * Marks Obtained
+     * Maximum Marks
+   - Enter Total Marks
+   - Save marks
+4. Bulk Entry (if many applicants):
+   - Download template Excel file
+   - Fill marks in Excel
+   - Upload Excel file
+   - System validates and imports
+   - Review imported data
+   - Confirm import
+
+**Step 4: Enter Interview Scores (if applicable)**
+1. Navigate to: Admissions → Test/Interview → Interview Scores
+2. Select Applicant
+3. Enter Interview Details:
+   - Interview Date
+   - Interviewer Name
+   - Scores by Criteria:
+     * Communication Skills
+     * Academic Knowledge
+     * Overall Impression
+   - Total Interview Score
+   - Interviewer Comments
+4. Save Interview Scores
+
+**Step 5: Publish Merit List**
+1. Navigate to: Admissions → Test/Interview → Generate Merit List
+2. Select Admission Circular
+3. Select Class
+4. Configure Merit List Criteria:
+   - Based on: Test Marks / Interview / Combined
+   - Weightage (if combined):
+     * Test: X%
+     * Interview: Y%
+   - Tie-breaker rules
+5. Generate Merit List:
+   - System calculates scores
+   - Ranks applicants
+   - Creates merit list
+6. Review Merit List:
+   - Check rankings
+   - Verify calculations
+7. Create Wait List:
+   - System automatically creates wait list for remaining applicants
+   - Wait list ordered by merit
+8. Publish Lists:
+   - Click "Publish Merit List"
+   - System makes lists visible on portal
+   - Sends notifications:
+     * Selected applicants: "Congratulations, you are selected"
+     * Wait list applicants: "You are on wait list"
+     * Not selected: "Thank you for applying"
+
+**Step 6: Automated Seat Allocation (Optional)**
+1. Navigate to: Admissions → Seat Allocation
+2. Select Admission Circular and Class
+3. Configure Allocation Rules:
+   - Allocation based on merit rank
+   - Reserved seats allocation (if any)
+   - Special category allocation
+4. Run Automatic Allocation:
+   - System allocates seats to top-ranked applicants
+   - Respects seat limits
+   - Handles reserved seats
+5. Review Allocation:
+   - Check allocated students
+   - Verify seat distribution
+6. Manual Adjustment (if needed):
+   - Select applicant
+   - Change allocated seat/class
+   - Save changes
+7. Finalize Allocation:
+   - Lock allocation
+   - System notifies allocated students
 
 **FR-2.2.4: Final Admission**
-1. Approve selected students
-2. Assign Class/Section/Group/Optional subjects
-3. Generate Student ID (unique, sequential)
-4. Create parent accounts automatically
-5. Assign roll numbers (auto/manual with rules)
-6. Student status: Applicant → Enrolled
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Approve Selected Students**
+1. Navigate to: Admissions → Final Admission → Approve Students
+2. View Merit List / Selected Applicants
+3. Select Students for Admission:
+   - Select individual students
+   - Or select all from merit list
+   - Or select by rank range
+4. Review Selected Students:
+   - Verify all information
+   - Check documents
+   - Confirm eligibility
+5. Approve for Admission:
+   - Click "Approve Selected"
+   - System changes status to "Approved for Admission"
+   - Sends approval notification to parents
+
+**Step 2: Assign Class/Section/Group**
+1. Navigate to: Admissions → Final Admission → Assign Class
+2. Select Approved Student
+3. Assign Academic Details:
+   - Select Academic Session
+   - Select Class
+   - Select Section (if multiple sections)
+   - Select Group/Stream (if applicable):
+     * Science
+     * Arts
+     * Commerce
+   - Select Optional Subjects (if applicable):
+     * Subject 1
+     * Subject 2
+     * (based on class requirements)
+4. Bulk Assignment (if many students):
+   - Select multiple students
+   - Set default class/section
+   - System assigns to all selected
+   - Individual adjustments can be made later
+5. Save Assignment
+6. System Actions:
+   - Creates student record
+   - Links to class/section
+   - Updates class strength
+
+**Step 3: Generate Student ID**
+1. System automatically generates Student ID:
+   - Format: Based on configured format (e.g., STU-2026-0001)
+   - Sequential numbering
+   - Unique identifier
+2. View Generated ID:
+   - Navigate to: Students → View Student
+   - Student ID displayed on profile
+3. Print ID Card (optional):
+   - Navigate to: Students → ID Cards → Generate
+   - Select student
+   - System generates ID card with:
+     * Student ID
+     * Student Name
+     * Photo
+     * Class/Section
+     * Academic Session
+     * QR Code
+   - Print ID card
+
+**Step 4: Create Parent Accounts**
+1. System automatically creates parent accounts:
+   - For each parent/guardian in application
+   - Generates username (usually phone number or email)
+   - Generates temporary password
+   - Sends login credentials via SMS/Email
+2. Parent Account Details:
+   - Username
+   - Temporary Password
+   - Login URL
+   - Instructions to change password
+3. Parent can login and:
+   - View child's information
+   - Pay fees
+   - View attendance
+   - View results
+   - Communicate with teachers
+
+**Step 5: Assign Roll Numbers**
+1. Navigate to: Students → Roll Number Assignment
+2. Select Class and Section
+3. Configure Roll Number Rules:
+   - Auto-assign: Sequential (1, 2, 3...)
+   - Manual assignment
+   - Based on merit rank
+4. Assign Roll Numbers:
+   - If auto: Click "Auto Assign"
+   - System assigns sequentially
+   - If manual: Enter roll number for each student
+5. Review Assignment:
+   - Check for duplicates
+   - Verify sequence
+6. Save Roll Numbers
+7. System updates student records
+
+**Step 6: Update Student Status**
+1. System automatically updates status:
+   - From "Approved for Admission" → "Enrolled"
+2. Student now appears in:
+   - Class student list
+   - Attendance system
+   - Fee system
+   - Academic system
 
 **FR-2.2.5: Admission Fees**
-1. System generates admission invoice automatically
-2. Payment collection (cash/bank/online)
-3. Receipt generation
-4. Student ledger update
-5. Student status: Enrolled → Active
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: System Generates Admission Invoice**
+1. When student status changes to "Enrolled":
+   - System automatically generates admission invoice
+   - Invoice includes:
+     * Admission Fee
+     * Registration Fee
+     * Other applicable fees
+2. View Generated Invoice:
+   - Navigate to: Fees → Invoices → View
+   - Select student
+   - View invoice details
+3. Invoice Details:
+   - Invoice Number (unique)
+   - Invoice Date
+   - Due Date
+   - Fee Breakdown
+   - Total Amount
+   - Payment Status
+
+**Step 2: Payment Collection**
+1. Cash Payment:
+   - Navigate to: Fees → Payments → Collect Payment
+   - Select student
+   - Select invoice
+   - Enter payment amount (full or partial)
+   - Select payment method: "Cash"
+   - Enter received amount
+   - Enter cashier name
+   - Click "Process Payment"
+2. Bank Deposit Payment:
+   - Select payment method: "Bank Deposit"
+   - Enter bank name
+   - Enter deposit slip number
+   - Enter deposit date
+   - Upload deposit slip (optional)
+   - Process payment
+3. Online Payment:
+   - Student/Parent accesses portal
+   - Views pending invoice
+   - Clicks "Pay Now"
+   - Selects payment gateway
+   - Enters payment details
+   - Completes payment
+   - System receives payment confirmation
+   - Updates invoice status
+
+**Step 3: Generate Receipt**
+1. After payment is recorded:
+   - System automatically generates receipt
+   - Receipt Number (unique, sequential)
+   - Receipt Date
+2. Receipt Contains:
+   - Student Name and ID
+   - Invoice Number
+   - Payment Details:
+     * Payment Date
+     * Payment Method
+     * Amount Paid
+     * Balance (if partial payment)
+   - School Logo and Details
+3. Print Receipt:
+   - Navigate to: Fees → Receipts → Print
+   - Select receipt
+   - Click "Print"
+   - Or email receipt to parent
+
+**Step 4: Update Student Ledger**
+1. System automatically updates:
+   - Student fee ledger
+   - Payment history
+   - Outstanding balance
+2. View Ledger:
+   - Navigate to: Fees → Student Ledger
+   - Select student
+   - View complete transaction history
+
+**Step 5: Update Student Status to Active**
+1. When admission fee is fully paid:
+   - System automatically changes status
+   - From "Enrolled" → "Active"
+2. Active Student can now:
+   - Attend classes
+   - Access all student portal features
+   - Participate in academic activities
+3. If fee not paid:
+   - Student remains "Enrolled"
+   - Access may be restricted
+   - Reminders sent to parents
 
 **Acceptance Criteria**:
 - Complete admission workflow is digitized
@@ -656,20 +1184,192 @@ The system interfaces with:
 **Sub-Requirements**:
 
 **FR-2.5.1: Student Attendance**
-1. Daily or period-wise attendance entry
-2. Attendance types: Present, Absent, Late, Leave, Excused
-3. Late arrival rules (time-based)
-4. Leave application and approval (student/parent initiated)
-5. Automatic parent notifications (SMS/email) for:
-   - Absence
-   - Late arrival
-   - Leave approval/rejection
-6. Attendance reports:
-   - Daily attendance sheet
-   - Monthly summary
-   - Term-wise summary
-   - Subject-wise attendance (for period-wise)
-7. Minimum attendance rules for exam eligibility
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Take Daily Attendance**
+1. Teacher/Class Teacher logs in
+2. Navigate to: Attendance → Take Attendance
+3. Select Date (default: today)
+4. Select Class and Section
+5. View Student List:
+   - System displays all students in class
+   - Shows previous attendance status (if any)
+6. Mark Attendance for Each Student:
+   - Click on student name
+   - Select attendance status:
+     * Present (P)
+     * Absent (A)
+     * Late (L)
+     * Leave (LV)
+     * Excused (E)
+7. For Late Students:
+   - Mark as "Late"
+   - Enter arrival time (if known)
+   - System automatically applies late rules
+8. For Leave Students:
+   - Mark as "Leave"
+   - System checks if leave was approved
+   - If not approved, mark as "Absent"
+9. Bulk Marking (if all present):
+   - Click "Mark All Present"
+   - System marks all as present
+   - Teacher can then change individual statuses
+10. Save Attendance:
+    - Click "Save Attendance"
+    - System validates:
+      * All students marked
+      * No duplicate entries
+    - If valid: Attendance saved
+    - If invalid: Error message shown
+
+**Step 2: Take Period-wise Attendance**
+1. Navigate to: Attendance → Period Attendance
+2. Select Date
+3. Select Class and Section
+4. Select Period/Subject:
+   - Choose from timetable
+   - Or select subject directly
+5. Mark Attendance:
+   - Similar to daily attendance
+   - But specific to that period/subject
+6. Save Period Attendance
+7. System Actions:
+   - Updates period attendance records
+   - Updates overall daily attendance
+   - Calculates subject-wise attendance percentage
+
+**Step 3: Late Arrival Processing**
+1. When student marked as "Late":
+   - System checks arrival time
+   - Compares with class start time
+2. Apply Late Rules:
+   - If arrival within grace period (e.g., 15 minutes):
+     * Marked as "Late" but counted as present
+   - If arrival after grace period:
+     * Marked as "Late"
+     * May be counted as partial absence (based on rules)
+3. Late Fine (if configured):
+   - System calculates late fine
+   - Adds to student fee ledger
+   - Notifies parent
+
+**Step 4: Leave Application and Approval**
+1. Student/Parent Initiates Leave:
+   - Login to portal
+   - Navigate to: Leave → Apply Leave
+   - Select Leave Date(s):
+     * Single day
+     * Multiple days (date range)
+   - Enter Leave Reason
+   - Upload Supporting Documents (if required)
+   - Submit Leave Application
+2. System Actions:
+   - Creates leave request
+   - Status: "Pending Approval"
+   - Notifies Class Teacher
+3. Class Teacher Reviews:
+   - Navigate to: Attendance → Leave Requests
+   - View pending requests
+   - Review leave details
+4. Approve/Reject Leave:
+   - If Approve:
+     * Click "Approve"
+     * Enter approval comments (optional)
+     * Status changes to "Approved"
+   - If Reject:
+     * Click "Reject"
+     * Enter rejection reason
+     * Status changes to "Rejected"
+5. System Notifications:
+   - Approved: Notifies student/parent
+   - Rejected: Notifies student/parent with reason
+6. Attendance Update:
+   - If approved: Student marked as "Leave" on that date
+   - If rejected: Student marked as "Absent" (if not present)
+
+**Step 5: Automatic Parent Notifications**
+1. System sends notifications for:
+   - Absence:
+     * When student marked absent
+     * Notification sent immediately or at end of day
+     * Contains: Date, Class, Student Name
+   - Late Arrival:
+     * When student marked late
+     * Notification sent immediately
+     * Contains: Arrival time, Late duration
+   - Leave Approval/Rejection:
+     * When leave approved/rejected
+     * Notification sent immediately
+     * Contains: Leave dates, Status, Reason (if rejected)
+2. Notification Methods:
+   - SMS (if configured)
+   - Email (if configured)
+   - Portal notification
+   - WhatsApp (if configured)
+
+**Step 6: Generate Attendance Reports**
+1. Daily Attendance Sheet:
+   - Navigate to: Reports → Attendance → Daily Sheet
+   - Select Date
+   - Select Class/Section
+   - Click "Generate Report"
+   - Report shows:
+     * Student list
+     * Attendance status for each
+     * Total present/absent/late
+   - Export to PDF/Excel
+2. Monthly Summary:
+   - Navigate to: Reports → Attendance → Monthly Summary
+   - Select Month
+   - Select Class/Section
+   - Report shows:
+     * Student-wise attendance
+     * Total days present/absent
+     * Attendance percentage
+     * Working days in month
+   - Export option available
+3. Term-wise Summary:
+   - Navigate to: Reports → Attendance → Term Summary
+   - Select Term
+   - Select Class/Section
+   - Report shows:
+     * Overall attendance for term
+     * Attendance percentage
+     * Comparison with previous term
+4. Subject-wise Attendance:
+   - Navigate to: Reports → Attendance → Subject-wise
+   - Select Subject
+   - Select Date Range
+   - Report shows:
+     * Attendance for that subject
+     * Percentage attendance per student
+
+**Step 7: Minimum Attendance Rules for Exam Eligibility**
+1. Configure Minimum Attendance:
+   - Navigate to: Settings → Attendance → Exam Eligibility
+   - Set Minimum Attendance Percentage (e.g., 75%)
+   - Set Rule Type:
+     * Overall attendance
+     * Subject-wise attendance
+     * Both
+2. Check Exam Eligibility:
+   - Before exam registration:
+     * System checks student attendance
+     * Compares with minimum requirement
+   - If Eligible:
+     * Student can register for exam
+   - If Not Eligible:
+     * Student cannot register
+     * System shows attendance percentage
+     * Shows shortfall
+3. Exception Handling:
+   - Principal/Admin can override:
+     * Navigate to: Students → Exam Eligibility
+     * Select student
+     * Click "Approve Exception"
+     * Enter reason
+     * Student can now register
 
 **FR-2.5.2: Staff Attendance**
 1. Attendance capture:
@@ -887,23 +1587,257 @@ The system interfaces with:
 **Sub-Requirements**:
 
 **FR-4.1.1: Fee Setup**
-1. Fee heads creation:
-   - Tuition fee, exam fee, admission fee
-   - Transport fee, hostel fee
-   - Library fee, lab fee, etc.
-2. Class-wise fee structure
-3. Category-wise fee structure (scholarship categories)
-4. Scholarship/waiver rules:
-   - Percentage-based
-   - Fixed amount
-   - Conditional (merit-based, need-based)
-5. Fine rules:
-   - Late payment fine (percentage or fixed)
-   - Fine calculation rules
-6. Installment plans:
-   - Number of installments
-   - Due dates
-   - Partial payment rules
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Create Fee Heads**
+1. Login as Accountant or Admin
+2. Navigate to: Fees → Fee Setup → Fee Heads
+3. Click "Add New Fee Head"
+4. Enter Fee Head Details:
+   - Fee Head Name (e.g., "Tuition Fee", "Exam Fee")
+   - Fee Head Code (unique identifier, e.g., "TUI", "EXM")
+   - Fee Head Type:
+     * One-time (e.g., Admission Fee)
+     * Recurring (e.g., Monthly Tuition)
+     * Optional (e.g., Library Fee)
+   - Description
+   - Applicable To:
+     * All Classes
+     * Specific Classes (select)
+   - Tax Applicable: Yes/No
+     * If Yes: Enter tax rate
+5. Set Fee Head Properties:
+   - Is Refundable: Yes/No
+   - Is Waivable: Yes/No
+   - Display Order (for invoice)
+6. Save Fee Head
+7. Repeat for all fee heads:
+   - Tuition Fee
+   - Exam Fee
+   - Admission Fee
+   - Transport Fee
+   - Hostel Fee
+   - Library Fee
+   - Lab Fee
+   - Sports Fee
+   - Other fees (as needed)
+
+**Step 2: Setup Class-wise Fee Structure**
+1. Navigate to: Fees → Fee Setup → Class Fee Structure
+2. Select Academic Session
+3. Select Class
+4. For each Fee Head:
+   - Enter Fee Amount
+   - Set Frequency:
+     * Monthly
+     * Quarterly
+     * Term-wise
+     * Annual
+     * One-time
+   - Set Due Date (if applicable)
+5. Configure Fee Structure:
+   - Base Fee Amount
+   - Additional Charges (if any)
+   - Discounts (if any)
+6. Copy Structure (if similar to another class):
+   - Select source class
+   - Click "Copy Structure"
+   - Modify amounts if needed
+7. Save Class Fee Structure
+8. Repeat for all classes
+
+**Step 3: Setup Category-wise Fee Structure**
+1. Navigate to: Fees → Fee Setup → Category Fee Structure
+2. Create Fee Categories:
+   - Full Fee (no discount)
+   - Scholarship Category 1 (e.g., 50% discount)
+   - Scholarship Category 2 (e.g., 25% discount)
+   - Need-based Category
+   - Merit-based Category
+3. For each Category:
+   - Enter Category Name
+   - Set Discount Percentage or Fixed Amount
+   - Select Applicable Fee Heads:
+     * Apply to all fees
+     * Apply to specific fees only
+4. Save Categories
+
+**Step 4: Setup Scholarship/Waiver Rules**
+1. Navigate to: Fees → Fee Setup → Scholarships/Waivers
+2. Create Scholarship Rule:
+   - Rule Name (e.g., "Merit Scholarship")
+   - Rule Type:
+     * Percentage-based (e.g., 50% off)
+     * Fixed Amount (e.g., 5000 off)
+     * Conditional (based on criteria)
+3. If Percentage-based:
+   - Enter Discount Percentage
+   - Select Applicable Fee Heads
+4. If Fixed Amount:
+   - Enter Discount Amount
+   - Select Applicable Fee Heads
+5. If Conditional:
+   - Set Conditions:
+     * Merit-based: Minimum GPA/Marks
+     * Need-based: Income criteria
+     * Other criteria
+   - Set Discount (percentage or amount)
+6. Set Validity:
+   - Start Date
+   - End Date
+   - Or Permanent
+7. Save Scholarship Rule
+8. Repeat for all scholarship types
+
+**Step 5: Setup Fine Rules**
+1. Navigate to: Fees → Fee Setup → Fine Rules
+2. Create Fine Rule:
+   - Rule Name (e.g., "Late Payment Fine")
+   - Fine Type:
+     * Percentage of due amount
+     * Fixed amount per period
+     * Fixed amount per day
+3. If Percentage-based:
+   - Enter Fine Percentage (e.g., 5%)
+   - Calculate on: Due Amount / Outstanding Balance
+4. If Fixed Amount:
+   - Enter Fine Amount
+   - Set Frequency:
+     * Per day
+     * Per week
+     * Per month
+     * One-time
+5. Set Fine Calculation Rules:
+   - Grace Period (days before fine applies)
+   - Maximum Fine Cap (if applicable)
+   - Fine Calculation Start Date
+6. Select Applicable Fee Heads
+7. Save Fine Rule
+
+**Step 6: Setup Installment Plans**
+1. Navigate to: Fees → Fee Setup → Installment Plans
+2. Create Installment Plan:
+   - Plan Name (e.g., "Monthly Installment")
+   - Number of Installments (e.g., 12 for monthly)
+   - Installment Frequency:
+     * Monthly
+     * Quarterly
+     * Custom
+3. Configure Installment Schedule:
+   - Start Date
+   - Due Date for each installment
+   - Amount per installment:
+     * Equal installments
+     * Custom amounts
+4. Set Partial Payment Rules:
+   - Allow Partial Payment: Yes/No
+   - Minimum Payment Amount
+   - Payment Priority (which fee head paid first)
+5. Save Installment Plan
+6. Assign Plan to Classes:
+   - Select classes
+   - Assign installment plan
+   - Save
+
+**FR-4.1.2: Billing and Invoicing**
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Automatic Invoice Generation**
+1. System automatically generates invoices based on schedule:
+   - Monthly invoices: Generated on 1st of each month
+   - Term-wise: Generated at term start
+   - Annual: Generated at session start
+2. Invoice Generation Process:
+   - System runs scheduled job
+   - For each active student:
+     * Retrieves fee structure
+     * Calculates fees
+     * Applies previous dues
+     * Applies waivers/scholarships
+     * Applies fines (if applicable)
+     * Generates invoice
+3. View Generated Invoices:
+   - Navigate to: Fees → Invoices → View All
+   - Filter by:
+     * Class
+     * Section
+     * Date Range
+     * Payment Status
+
+**Step 2: Manual Invoice Generation (if needed)**
+1. Navigate to: Fees → Invoices → Generate Invoice
+2. Select Student(s):
+   - Individual student
+   - Bulk by class/section
+3. Select Fee Period:
+   - Month
+   - Term
+   - Custom date range
+4. Review Fee Calculation:
+   - Base fees
+   - Previous dues
+   - Waivers applied
+   - Fines (if any)
+   - Total amount
+5. Generate Invoice:
+   - Click "Generate Invoice"
+   - System creates invoice
+   - Invoice number assigned
+
+**Step 3: Invoice Calculation Details**
+1. System calculates invoice as follows:
+   - Base Fee Amount:
+     * Retrieves class fee structure
+     * Applies fee amounts
+   - Previous Dues:
+     * Sums all unpaid invoices
+     * Includes overdue amounts
+   - Waivers/Scholarships:
+     * Checks student category
+     * Applies applicable discounts
+     * Calculates waiver amount
+   - Fines:
+     * Checks payment due dates
+     * Calculates fine if overdue
+     * Applies fine rules
+   - Total Calculation:
+     * Base Fees + Previous Dues - Waivers + Fines = Total Due
+
+**Step 4: Invoice Notification**
+1. After invoice generation:
+   - System sends notifications
+2. Email Notification:
+   - System sends email to parent
+   - Email contains:
+     * Invoice PDF attachment
+     * Invoice summary
+     * Payment instructions
+     * Payment link (if online payment enabled)
+3. SMS Notification:
+   - System sends SMS to parent
+   - SMS contains:
+     * Invoice number
+     * Total amount
+     * Due date
+     * Payment link (if applicable)
+4. Portal Notification:
+   - Notification appears in parent portal
+   - Parent can view and download invoice
+
+**Step 5: Invoice Customization**
+1. Navigate to: Fees → Settings → Invoice Template
+2. Customize Invoice Template:
+   - Upload School Logo
+   - Set Header Text
+   - Set Footer Text
+   - Add Custom Fields
+   - Set Terms and Conditions
+3. Preview Invoice:
+   - Click "Preview"
+   - Review appearance
+4. Save Template
 
 **FR-4.1.2: Billing and Invoicing**
 1. Automatic invoice generation:
