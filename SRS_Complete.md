@@ -475,6 +475,105 @@ The system interfaces with:
 3. Permission inheritance and override
 4. Audit trail for permission changes
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Access Role Management**
+1. Login as Super Admin
+2. Navigate to: Settings → Users & Roles → Roles
+3. View existing roles list
+
+**Step 2: Create Custom Role**
+1. Click "Create New Role" button
+2. Enter Role Details:
+   - Role Name (e.g., "Assistant Academic Admin")
+   - Role Code (unique identifier)
+   - Description
+   - Based on (select existing role to inherit from, optional)
+3. Set Role Permissions:
+   - Navigate through module tree
+   - For each module, set permissions:
+     * View: Yes/No
+     * Create: Yes/No
+     * Edit: Yes/No
+     * Delete: Yes/No
+     * Approve: Yes/No (if applicable)
+   - Modules to configure:
+     * Academic Operations
+     * Admissions
+     * Attendance
+     * Exams & Results
+     * Fees & Finance
+     * Accounting
+     * HR & Payroll
+     * Inventory
+     * Library
+     * Transport
+     * Hostel
+     * Reports
+     * Settings
+4. Set Data Access Restrictions:
+   - All Data: Yes/No
+   - Own Data Only: Yes/No
+   - Assigned Classes Only: Yes/No
+   - Department Only: Yes/No
+5. Set Approval Limits (if applicable):
+   - Maximum amount for approval
+   - Require second approval above limit
+6. Save Role
+
+**Step 3: Assign Roles to Users**
+1. Navigate to: Settings → Users & Roles → Users
+2. Select User to assign role
+3. Click "Edit Roles"
+4. Assign Roles:
+   - Check roles to assign
+   - Uncheck roles to remove
+   - User can have multiple roles
+5. Set Primary Role (if multiple roles):
+   - Select primary role (default interface)
+6. Save User Roles
+7. System Actions:
+   - Updates user permissions
+   - Logs role assignment
+   - User must re-login for changes to take effect
+
+**Step 4: Configure Permission Inheritance**
+1. Navigate to: Settings → Users & Roles → Permission Inheritance
+2. View role hierarchy
+3. Set Inheritance Rules:
+   - Child roles inherit from parent roles
+   - Can override specific permissions
+4. Configure Override:
+   - Select role
+   - Select permission to override
+   - Set override value
+   - Save override
+
+**Step 5: Test Role Permissions**
+1. Login as test user with assigned role
+2. Test Access:
+   - Try accessing each module
+   - Verify allowed access works
+   - Verify restricted access is blocked
+3. Test Actions:
+   - Try create/edit/delete operations
+   - Verify permissions are enforced
+4. Document any issues
+
+**Step 6: Audit Permission Changes**
+1. View Permission Change Log:
+   - Navigate to: Settings → Audit Logs → Permission Changes
+2. View Log Entries:
+   - Date and time
+   - User who made change
+   - Role affected
+   - Permission changed
+   - Old value
+   - New value
+3. Export Log (if needed):
+   - Filter by date range
+   - Export to Excel/PDF
+
 **Acceptance Criteria**:
 - All roles have appropriate access levels
 - Permission changes are logged
@@ -493,6 +592,153 @@ The system interfaces with:
    - Weekly full backups
    - Offsite backup (optional)
 5. Notification preferences (default settings)
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Access System Configuration**
+1. Login as Super Admin
+2. Navigate to: Settings → System Configuration
+3. View configuration categories
+
+**Step 2: Configure Audit Logs**
+1. Navigate to: Settings → System Configuration → Audit Logs
+2. Set Log Retention Period:
+   - Application Logs: 90 days (default)
+   - Audit Logs: 365 days (default)
+   - Error Logs: 180 days (default)
+   - Custom retention period
+3. Configure Log Levels:
+   - DEBUG: Enable/Disable
+   - INFO: Enable/Disable
+   - WARN: Enable/Disable
+   - ERROR: Enable/Disable
+   - FATAL: Enable/Disable
+4. Set Log Rotation:
+   - Daily rotation: Yes/No
+   - Maximum log file size
+   - Archive old logs: Yes/No
+5. Configure Log Storage:
+   - Local storage path
+   - Cloud storage (optional)
+6. Save Audit Log Settings
+
+**Step 3: Configure Approval Workflow Engine**
+1. Navigate to: Settings → System Configuration → Approval Workflows
+2. Create Approval Workflow:
+   - Workflow Name (e.g., "Fee Waiver Approval")
+   - Workflow Type:
+     * Single Level (one approver)
+     * Multi-Level (multiple approvers)
+     * Parallel (multiple approvers, any can approve)
+3. Configure Approval Levels:
+   - Level 1:
+     * Approver Role (e.g., "Principal")
+     * Approval Limit (e.g., up to 10,000)
+     * Required: Yes/No
+   - Level 2 (if multi-level):
+     * Approver Role (e.g., "Super Admin")
+     * Approval Limit (e.g., above 10,000)
+     * Required: Yes/No
+4. Set Workflow Rules:
+   - Auto-approve if within limit: Yes/No
+   - Escalate if not approved in X days
+   - Notify on approval/rejection
+5. Assign Workflow to Modules:
+   - Select modules that use this workflow
+   - Save assignment
+6. Save Workflow Configuration
+
+**Step 4: Configure Data Retention Policies**
+1. Navigate to: Settings → System Configuration → Data Retention
+2. Set Retention Periods:
+   - Active Student Data: Indefinite
+   - Archived Student Data: 10 years
+   - Financial Records: 7 years
+   - Audit Logs: 1 year
+   - Application Logs: 90 days
+   - Backup Files: 30 days (daily), 1 year (weekly)
+3. Configure Auto-Archival:
+   - Enable auto-archival: Yes/No
+   - Archive data older than: (specify period)
+   - Archive location
+4. Set Data Deletion Rules:
+   - Auto-delete after retention: Yes/No
+   - Require approval before deletion: Yes/No
+5. Save Retention Policies
+
+**Step 5: Configure Backup Settings**
+1. Navigate to: Settings → System Configuration → Backup Settings
+2. Configure Daily Backups:
+   - Enable daily backup: Yes/No
+   - Backup time (e.g., 2:00 AM)
+   - Backup type: Incremental
+   - Retention: 30 days
+   - Storage location: Local/Cloud
+3. Configure Weekly Full Backups:
+   - Enable weekly backup: Yes/No
+   - Backup day (e.g., Sunday)
+   - Backup time (e.g., 1:00 AM)
+   - Backup type: Full
+   - Retention: 1 year
+   - Storage location: Local/Cloud
+4. Configure Offsite Backup (Optional):
+   - Enable offsite backup: Yes/No
+   - Cloud provider: AWS/Azure/GCP/Other
+   - Configure cloud credentials
+   - Set backup frequency
+   - Set encryption: Yes/No
+5. Configure Backup Verification:
+   - Verify backup after creation: Yes/No
+   - Test restore monthly: Yes/No
+   - Alert on backup failure: Yes/No
+6. Set Backup Notifications:
+   - Email on success: Yes/No
+   - Email on failure: Yes/No
+   - Recipient email addresses
+7. Test Backup:
+   - Click "Test Backup Now"
+   - Verify backup created successfully
+   - Verify backup file integrity
+8. Save Backup Configuration
+
+**Step 6: Configure Notification Preferences**
+1. Navigate to: Settings → System Configuration → Notifications
+2. Set Default Notification Methods:
+   - Email: Enable/Disable
+   - SMS: Enable/Disable
+   - Portal: Enable/Disable
+   - WhatsApp: Enable/Disable
+3. Configure Notification Types:
+   - Attendance Notifications:
+     * Absence: Email/SMS/Both
+     * Late: Email/SMS/Both
+   - Fee Notifications:
+     * Invoice: Email/SMS/Both
+     * Due Reminder: Email/SMS/Both
+   - Exam Notifications:
+     * Result Published: Email/SMS/Both
+     * Exam Schedule: Email/SMS/Both
+   - Other Notifications:
+     * Configure each type
+4. Set Notification Timing:
+   - Immediate: Yes/No
+   - Scheduled (specify time)
+   - Batch (daily summary)
+5. Configure Notification Templates:
+   - Edit email templates
+   - Edit SMS templates
+   - Preview templates
+6. Save Notification Settings
+
+**Step 7: Verify All Configurations**
+1. Review all configuration settings
+2. Test each configuration:
+   - Test audit log creation
+   - Test approval workflow
+   - Test backup process
+   - Test notification sending
+3. Document configuration
+4. Save all changes
 
 **Acceptance Criteria**:
 - All configurations are accessible to Super Admin
@@ -528,6 +774,192 @@ The system interfaces with:
    - Holidays and events
    - Working days
    - Bell schedule/periods
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Create Academic Session**
+1. Login as Academic Admin
+2. Navigate to: Academic → Sessions → Create New
+3. Enter Session Details:
+   - Session Name (e.g., "2026" or "2026-2027")
+   - Start Date
+   - End Date
+   - Session Type:
+     * Calendar Year
+     * Academic Year
+   - Status: Active/Inactive
+4. Set Session as Current:
+   - Check "Set as Current Session" if this is the active session
+   - Only one session can be current at a time
+5. Save Session
+6. System Actions:
+   - Creates session record
+   - Sets up session structure
+   - Makes session available for use
+
+**Step 2: Setup Academic Structure - Classes**
+1. Navigate to: Academic → Structure → Classes
+2. Create Class:
+   - Click "Add New Class"
+   - Enter Class Name (e.g., "Class 1", "Grade 1")
+   - Enter Class Code (e.g., "C1", "G1")
+   - Enter Class Order (for sorting)
+   - Select Academic Session
+   - Set Class Level (if hierarchical)
+3. Save Class
+4. Repeat for all classes
+5. Organize Classes:
+   - Drag and drop to reorder
+   - Set class hierarchy if needed
+
+**Step 3: Setup Sections**
+1. Navigate to: Academic → Structure → Sections
+2. For each Class, create Sections:
+   - Select Class
+   - Click "Add Section"
+   - Enter Section Name (e.g., "A", "B", "Science", "Arts")
+   - Enter Section Code
+   - Set Maximum Capacity (optional)
+   - Set Section Teacher (optional)
+3. Save Section
+4. Repeat for all classes
+
+**Step 4: Setup Groups/Streams**
+1. Navigate to: Academic → Structure → Groups
+2. For each Class/Section, create Groups:
+   - Select Class and Section
+   - Click "Add Group"
+   - Enter Group Name (e.g., "Science Group", "Arts Group")
+   - Enter Group Code
+3. Configure Subject Combinations:
+   - Select subjects for this group
+   - Set as default combination
+4. Save Group
+5. Repeat for all classes that have groups
+
+**Step 5: Setup Subjects**
+1. Navigate to: Academic → Subjects → Create New
+2. Enter Subject Details:
+   - Subject Name (e.g., "Mathematics", "English")
+   - Subject Code (e.g., "MATH", "ENG")
+   - Subject Type:
+     * Compulsory
+     * Optional
+     * Elective
+   - Subject Category:
+     * Core
+     * Language
+     * Science
+     * Arts
+     * Other
+3. Configure Subject Components:
+   - Add Component:
+     * Component Name (e.g., "CQ", "MCQ", "Practical")
+     * Component Code
+     * Maximum Marks
+     * Weightage (percentage)
+   - Repeat for all components
+   - Total must equal 100%
+4. Set Marks Distribution:
+   - Total Marks for Subject
+   - Pass Marks
+   - Component-wise pass marks (if applicable)
+5. Assign Subject to Classes:
+   - Select classes where subject is taught
+   - Set as compulsory/optional for each class
+6. Assign Teachers (optional):
+   - Select default teacher(s) for subject
+7. Save Subject
+8. Repeat for all subjects
+
+**Step 6: Setup Departments**
+1. Navigate to: Academic → Departments
+2. Create Academic Departments:
+   - Click "Add Department"
+   - Enter Department Name (e.g., "Science", "Arts", "Commerce")
+   - Enter Department Code
+   - Set Department Head (optional)
+   - Save Department
+3. Create Staff Departments:
+   - Click "Add Staff Department"
+   - Enter Department Name (e.g., "Administration", "Teaching", "Support")
+   - Enter Department Code
+   - Set Department Head
+   - Save Department
+
+**Step 7: Configure Grading System**
+1. Navigate to: Academic → Settings → Grading System
+2. Create Grade Scale:
+   - Click "Add Grade"
+   - Enter Grade Name (e.g., "A+", "A", "B+", "B", "C", "F")
+   - Enter Grade Points (e.g., 5.0, 4.0, 3.0, 2.0, 1.0, 0.0)
+   - Set Marks Range:
+     * Minimum Marks (e.g., 80)
+     * Maximum Marks (e.g., 100)
+   - Set Grade Description
+3. Repeat for all grades
+4. Configure GPA Calculation:
+   - Select GPA Scale (4.0, 5.0, or custom)
+   - Set Calculation Method:
+     * Simple Average
+     * Weighted Average
+   - Set Optional Subject Rules:
+     * Include in GPA: Yes/No
+     * If No: How to handle
+5. Save Grading System
+
+**Step 8: Setup Academic Calendar**
+1. Navigate to: Academic → Calendar
+2. Add Holidays:
+   - Click "Add Holiday"
+   - Enter Holiday Name
+   - Select Date(s):
+     * Single day
+     * Date range
+   - Select Holiday Type:
+     * Public Holiday
+     * School Holiday
+     * Exam Holiday
+   - Save Holiday
+3. Add Events:
+   - Click "Add Event"
+   - Enter Event Name
+   - Select Date(s)
+   - Enter Event Description
+   - Set Event Type
+   - Save Event
+4. Configure Working Days:
+   - Select days of week that are working days
+   - Set working hours
+5. Setup Bell Schedule:
+   - Navigate to: Academic → Settings → Bell Schedule
+   - Add Period:
+     * Period Number
+     * Period Name (e.g., "Period 1", "Lunch")
+     * Start Time
+     * End Time
+     * Duration
+   - Add Break:
+     * Break Name (e.g., "Morning Break", "Lunch Break")
+     * Start Time
+     * End Time
+   - Save Bell Schedule
+
+**Step 9: Verify Academic Setup**
+1. Review all configurations:
+   - Sessions
+   - Classes and Sections
+   - Subjects
+   - Departments
+   - Grading System
+   - Calendar
+2. Test Structure:
+   - Create test student
+   - Assign to class/section
+   - Verify subject assignment
+   - Verify grading calculation
+3. Make corrections if needed
+4. Finalize Setup
 
 **Acceptance Criteria**:
 - Multiple academic sessions can be active
@@ -1131,6 +1563,139 @@ The system interfaces with:
 4. Re-admission workflow (for returning students)
 5. Promotion workflow (detailed in FR-3.4)
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Transfer Certificate (TC) Request**
+1. Student/Parent initiates TC request:
+   - Login to portal
+   - Navigate to: Students → Transfer Certificate → Request TC
+   - Enter transfer details:
+     * Transfer reason
+     * Destination school (if known)
+     * Transfer date
+   - Submit request
+2. Or Front Desk creates request:
+   - Navigate to: Students → Transfer Certificate → Create Request
+   - Select student
+   - Enter transfer details
+   - Save request
+3. System Actions:
+   - Creates TC request
+   - Status: "Pending Clearance"
+   - Notifies Academic Admin
+
+**Step 2: Clearance Checks**
+1. Academic Admin accesses: Students → Transfer Certificate → Pending Clearance
+2. Select TC request
+3. System automatically checks:
+   - Fee Clearance:
+     * Navigate to: Fees → Student Ledger
+     * Check outstanding balance
+     * If dues exist: Clearance failed
+     * If no dues: Clearance passed
+   - Library Clearance:
+     * Navigate to: Library → Student Books
+     * Check issued books
+     * If books not returned: Clearance failed
+     * If all returned: Clearance passed
+   - Hostel Clearance (if applicable):
+     * Navigate to: Hostel → Student Allocation
+     * Check hostel allocation
+     * If allocated: Check room clearance
+     * Clearance status updated
+   - Transport Clearance (if applicable):
+     * Navigate to: Transport → Student Allocation
+     * Check transport allocation
+     * Check transport fee payment
+     * Clearance status updated
+4. Manual Clearance Verification:
+   - Review each clearance status
+   - If any failed: Contact relevant department
+   - Resolve issues
+   - Re-check clearance
+5. All Clearances Passed:
+   - System updates status to "Clearance Complete"
+   - Ready for approval
+
+**Step 3: TC Approval Workflow**
+1. Academic Admin reviews:
+   - Navigate to: Students → Transfer Certificate → Pending Approval
+   - Review student details
+   - Review clearance status
+   - Review transfer reason
+2. Approve TC:
+   - Click "Approve TC"
+   - Enter approval comments (optional)
+   - Status changes to "Approved"
+3. Or Reject TC:
+   - Click "Reject"
+   - Enter rejection reason
+   - Status changes to "Rejected"
+   - Notifies student/parent
+
+**Step 4: Generate Transfer Certificate**
+1. When TC approved:
+   - Navigate to: Students → Transfer Certificate → Generate TC
+   - Select approved request
+2. System generates TC:
+   - Unique TC Number (format: TC-YYYY-####)
+   - Student details
+   - Academic history
+   - Transfer date
+   - School seal and signature
+3. Review TC:
+   - Preview generated certificate
+   - Verify all information
+4. Print TC:
+   - Click "Print TC"
+   - Print on official letterhead
+   - Sign by authorized person
+5. Issue TC to student/parent:
+   - Record issue date
+   - Record recipient name
+   - Get signature on receipt
+
+**Step 5: Update Student Status**
+1. After TC issued:
+   - Navigate to: Students → Update Status
+   - Select student
+   - Change status to "Transferred"
+2. System Actions:
+   - Updates student status
+   - Archives student record
+   - Removes from active class list
+   - Logs status change
+3. Move to Alumni (if applicable):
+   - If student completed studies
+   - Move to alumni module
+   - Maintain alumni record
+
+**Step 6: Withdrawal Workflow**
+1. Similar to TC workflow:
+   - Create withdrawal request
+   - Perform clearance checks
+   - Approve withdrawal
+   - Update student status to "Withdrawn"
+2. Difference:
+   - No TC generated
+   - Withdrawal certificate (if needed)
+   - Different status code
+
+**Step 7: Re-admission Workflow**
+1. For returning students:
+   - Navigate to: Students → Re-admission
+   - Search previous student record
+   - Verify previous enrollment
+2. Create re-admission:
+   - Select previous student
+   - Enter re-admission details
+   - Assign new class/section
+   - Generate new student ID (or reactivate old)
+3. Update status:
+   - From "Transferred"/"Withdrawn" → "Active"
+   - Restore student access
+   - Update class strength
+
 **Acceptance Criteria**:
 - All status transitions are logged
 - Clearance checks prevent incomplete transfers
@@ -1143,34 +1708,303 @@ The system interfaces with:
 **Sub-Requirements**:
 
 **FR-2.4.1: Timetable Setup**
-1. Define periods, breaks, duration
-2. Define rooms/labs and capacity
-3. Teacher availability management
-4. Create class routine:
-   - Subject assignment to periods
-   - Teacher assignment
-   - Room assignment
-5. Create teacher routine (all classes for a teacher)
-6. Create room routine (all classes in a room)
-7. Conflict detection and resolution
-8. Publish timetable (make visible to students/teachers)
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Define Periods and Breaks**
+1. Navigate to: Academic → Timetable → Periods Setup
+2. Configure Periods:
+   - Click "Add Period"
+   - Enter Period Number (1, 2, 3...)
+   - Enter Period Name (e.g., "Period 1", "Period 2")
+   - Set Start Time
+   - Set End Time
+   - Set Duration (auto-calculated)
+   - Save Period
+3. Configure Breaks:
+   - Click "Add Break"
+   - Enter Break Name (e.g., "Morning Break", "Lunch Break")
+   - Set Start Time
+   - Set End Time
+   - Set Break Duration
+   - Save Break
+4. Review Schedule:
+   - View complete day schedule
+   - Verify no time conflicts
+   - Adjust if needed
+
+**Step 2: Define Rooms/Labs**
+1. Navigate to: Academic → Timetable → Rooms Setup
+2. Add Room:
+   - Click "Add Room"
+   - Enter Room Number/Name
+   - Enter Room Code
+   - Set Room Type:
+     * Regular Classroom
+     * Laboratory
+     * Computer Lab
+     * Library
+     * Auditorium
+     * Other
+   - Set Capacity (maximum students)
+   - Set Equipment/Facilities (if lab)
+   - Set Availability (all days/specific days)
+   - Save Room
+3. Repeat for all rooms
+4. Organize Rooms:
+   - Group by building/floor
+   - Set room hierarchy if needed
+
+**Step 3: Manage Teacher Availability**
+1. Navigate to: Academic → Timetable → Teacher Availability
+2. Select Teacher
+3. Set Available Periods:
+   - For each day of week
+   - Mark available periods
+   - Mark unavailable periods
+4. Set Unavailable Times:
+   - Add unavailable slot
+   - Enter reason (optional)
+   - Set date range (if temporary)
+5. Set Preferred Periods (optional):
+   - Mark preferred teaching periods
+   - System considers when assigning
+6. Save Teacher Availability
+7. Repeat for all teachers
+
+**Step 4: Create Class Routine**
+1. Navigate to: Academic → Timetable → Class Routine
+2. Select Academic Session
+3. Select Class and Section
+4. Create Routine:
+   - For each day of week
+   - For each period:
+     * Select Subject
+     * Select Teacher (from available teachers)
+     * Select Room (from available rooms)
+     * System checks:
+       - Teacher availability
+       - Room availability
+       - No conflicts
+5. Handle Conflicts:
+   - If conflict detected:
+     * System highlights conflict
+     * Shows conflicting assignment
+     * User resolves conflict
+     * Re-assign subject/teacher/room
+6. Save Routine:
+   - Click "Save Routine"
+   - System validates:
+     * All periods filled
+     * No conflicts
+     * Teacher availability
+     * Room availability
+   - If valid: Routine saved
+   - If invalid: Error messages shown
+
+**Step 5: Generate Teacher Routine**
+1. Navigate to: Academic → Timetable → Teacher Routine
+2. Select Teacher
+3. System automatically generates:
+   - All classes assigned to teacher
+   - Day-wise schedule
+   - Period-wise schedule
+   - Room assignments
+4. View Teacher Routine:
+   - Daily view
+   - Weekly view
+   - Print routine
+
+**Step 6: Generate Room Routine**
+1. Navigate to: Academic → Timetable → Room Routine
+2. Select Room
+3. System automatically generates:
+   - All classes using room
+   - Day-wise schedule
+   - Period-wise schedule
+   - Teacher assignments
+4. View Room Routine:
+   - Check room utilization
+   - Identify free periods
+   - Print routine
+
+**Step 7: Conflict Detection and Resolution**
+1. System automatically detects:
+   - Teacher double-booking
+   - Room double-booking
+   - Class without teacher
+   - Period without subject
+2. View Conflicts:
+   - Navigate to: Academic → Timetable → Conflicts
+   - View all detected conflicts
+3. Resolve Conflicts:
+   - Select conflict
+   - View conflict details
+   - Re-assign teacher/room/subject
+   - Save changes
+4. Re-check Conflicts:
+   - System re-validates
+   - Confirms resolution
+
+**Step 8: Publish Timetable**
+1. Review Complete Timetable:
+   - Check all classes
+   - Verify all periods filled
+   - Ensure no conflicts
+2. Publish Timetable:
+   - Navigate to: Academic → Timetable → Publish
+   - Select timetable to publish
+   - Click "Publish"
+   - Set publish date
+3. System Actions:
+   - Makes timetable visible to:
+     * Students
+     * Teachers
+     * Parents
+   - Sends notifications (optional)
+   - Creates timetable snapshot
 
 **FR-2.4.2: Substitute Teacher Management**
-1. Teacher marks leave/unavailability
-2. System suggests available substitute teachers
-3. Admin assigns substitute
-4. Routine automatically updates for affected day
-5. Notifications to students/teachers
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Teacher Marks Leave/Unavailability**
+1. Teacher logs in
+2. Navigate to: Timetable → Mark Unavailability
+3. Select Date(s):
+   - Single day
+   - Date range
+4. Select Periods:
+   - All periods
+   - Specific periods
+5. Enter Reason:
+   - Leave
+   - Training
+   - Other (specify)
+6. Submit Request
+7. System Actions:
+   - Creates unavailability record
+   - Highlights in timetable
+   - Notifies Academic Admin
+
+**Step 2: System Suggests Substitute Teachers**
+1. Academic Admin accesses: Timetable → Substitute Assignment
+2. View Unavailable Teachers:
+   - List of teachers with unavailability
+   - Dates and periods
+3. Select Unavailable Slot:
+   - Click on unavailable period
+   - View class and subject
+4. System Suggests Substitutes:
+   - Based on:
+     * Same subject expertise
+     * Available during that period
+     * Previous substitute assignments
+   - Shows suggested teachers
+   - Shows teacher availability
+
+**Step 3: Assign Substitute Teacher**
+1. Review Suggestions:
+   - Check suggested teachers
+   - Verify availability
+2. Assign Substitute:
+   - Select substitute teacher
+   - Click "Assign Substitute"
+   - System updates timetable for that day/period
+3. Or Manual Assignment:
+   - Search for teacher
+   - Check availability manually
+   - Assign if available
+4. Save Assignment:
+   - System updates routine
+   - Notifies:
+     * Original teacher
+     * Substitute teacher
+     * Students (optional)
+
+**Step 4: Routine Auto-Update**
+1. System automatically updates:
+   - Timetable for affected day
+   - Teacher routine for substitute
+   - Class routine
+2. View Updated Routine:
+   - Students see updated timetable
+   - Teachers see updated schedule
+3. Revert on Return:
+   - When original teacher returns
+   - System reverts to original timetable
+   - Or manual revert if needed
 
 **FR-2.4.3: Class Diary/Lesson Plan**
-1. Teacher logs daily lesson delivered:
-   - Chapter/topic covered
-   - Materials used
-   - Homework assigned
-   - Attachments (files, links)
-2. Class teacher/principal can review
-3. Lesson plan templates (optional)
-4. Progress tracking
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Teacher Logs Daily Lesson**
+1. Teacher logs in
+2. Navigate to: Academic → Class Diary → Log Lesson
+3. Select Date (default: today)
+4. Select Class and Section
+5. Select Subject
+6. Enter Lesson Details:
+   - Chapter/Topic Covered
+   - Learning Objectives
+   - Teaching Methods Used
+   - Materials Used:
+     * Textbooks
+     * Visual aids
+     * Digital resources
+   - Homework Assigned:
+     * Assignment details
+     * Due date
+   - Attachments:
+     * Upload files (PDF, images, etc.)
+     * Add links
+7. Save Lesson Log
+
+**Step 2: Review Lesson Logs**
+1. Class Teacher/Principal accesses: Academic → Class Diary → Review
+2. View Lesson Logs:
+   - Filter by:
+     * Date range
+     * Class/Section
+     * Subject
+     * Teacher
+3. Review Details:
+   - Check lesson coverage
+   - Verify homework assigned
+   - Review teaching methods
+4. Add Comments (optional):
+   - Provide feedback
+   - Suggest improvements
+5. Approve Log (if approval required)
+
+**Step 3: Lesson Plan Templates (Optional)**
+1. Navigate to: Academic → Class Diary → Templates
+2. Create Template:
+   - Enter Template Name
+   - Define structure:
+     * Learning objectives
+     * Teaching methods
+     * Assessment methods
+   - Save template
+3. Use Template:
+   - When logging lesson
+   - Select template
+   - Fill in details
+   - Save
+
+**Step 4: Progress Tracking**
+1. View Progress Reports:
+   - Navigate to: Academic → Class Diary → Progress
+2. Select Class and Subject
+3. View Progress:
+   - Topics covered
+   - Topics remaining
+   - Completion percentage
+   - Timeline comparison
+4. Generate Progress Report:
+   - Export to PDF/Excel
+   - Share with principal/admin
 
 **Acceptance Criteria**:
 - Timetable conflicts are detected automatically
@@ -1484,6 +2318,164 @@ The system interfaces with:
 6. Publish schedule to student/parent portal
 7. Generate admit cards (if required)
 
+**Detailed Step-by-Step Process**:
+
+**Step 1: Create Exam Term**
+1. Login as Exam Controller
+2. Navigate to: Exams → Exam Terms → Create New
+3. Enter Exam Term Details:
+   - Term Name (e.g., "Class Test 1", "Mid-term Exam", "Final Exam")
+   - Term Type:
+     * Class Test (CT)
+     * Mid-term
+     * Final
+     * Annual
+   - Academic Session (select)
+   - Start Date
+   - End Date
+   - Status: Active/Inactive
+4. Configure Exam Settings:
+   - Allow late submission: Yes/No
+   - Require admit card: Yes/No
+   - Publish results date (if known)
+5. Save Exam Term
+
+**Step 2: Define Marks Distribution**
+1. Navigate to: Exams → Exam Terms → [Select Term] → Marks Distribution
+2. Select Class
+3. For each Subject:
+   - Select Subject
+   - Configure Components:
+     * CQ (Creative Question):
+       - Maximum Marks
+       - Weightage (%)
+     * MCQ (Multiple Choice):
+       - Maximum Marks
+       - Weightage (%)
+     * Practical (if applicable):
+       - Maximum Marks
+       - Weightage (%)
+   - Set Total Marks (sum of all components)
+   - Set Pass Marks
+   - Save Subject Configuration
+4. Repeat for all subjects
+5. Verify Distribution:
+   - Check all components sum to 100%
+   - Verify total marks consistency
+
+**Step 3: Create Exam Routine**
+1. Navigate to: Exams → Exam Terms → [Select Term] → Exam Routine
+2. Select Class
+3. Add Exam Schedule:
+   - Click "Add Exam"
+   - Select Subject
+   - Enter Exam Date
+   - Enter Start Time
+   - Enter Duration (hours)
+   - Enter End Time (auto-calculated)
+4. Organize Schedule:
+   - Arrange exams chronologically
+   - Ensure no time conflicts
+   - Consider subject difficulty distribution
+5. Save Routine
+6. Repeat for all classes
+7. View Complete Routine:
+   - All classes schedule
+   - Identify any conflicts
+   - Make adjustments if needed
+
+**Step 4: Create Room/Seat Plan**
+1. Navigate to: Exams → Exam Terms → [Select Term] → Room Plan
+2. Select Exam Date and Subject
+3. Allocate Rooms:
+   - View available rooms
+   - Select rooms for exam
+   - System shows room capacity
+4. Assign Students to Rooms:
+   - Select class/section
+   - Click "Auto Allocate" or "Manual Allocate"
+   - If Auto:
+     * System distributes students evenly
+     * Respects room capacity
+     * Minimizes same-class grouping
+   - If Manual:
+     * Select room
+     * Select students
+     * Assign to room
+5. Assign Seat Numbers:
+   - For each room:
+     * System assigns sequential seat numbers
+     * Or manual assignment
+     * Ensures proper spacing
+6. Review Room Plan:
+   - Check capacity utilization
+   - Verify all students assigned
+   - Check seat distribution
+7. Save Room Plan
+8. Generate Room Plan Report:
+   - Print room-wise student list
+   - Print seat plan diagram
+
+**Step 5: Assign Invigilators**
+1. Navigate to: Exams → Exam Terms → [Select Term] → Invigilator Assignment
+2. Select Exam Date and Room
+3. View Available Invigilators:
+   - Staff members available during exam time
+   - Previous invigilation assignments
+4. Assign Invigilators:
+   - Select invigilator(s)
+   - Assign to room
+   - Set invigilator role:
+     * Chief Invigilator
+     * Invigilator
+     * Assistant
+5. Balance Assignments:
+   - Ensure fair distribution
+   - Avoid over-assignment
+   - Consider invigilator preferences
+6. Save Assignments
+7. Generate Invigilator Schedule:
+   - View invigilator-wise schedule
+   - Print invigilator duty list
+
+**Step 6: Publish Exam Schedule**
+1. Review Complete Schedule:
+   - Check all exams scheduled
+   - Verify room assignments
+   - Confirm invigilator assignments
+2. Publish Schedule:
+   - Navigate to: Exams → Exam Terms → [Select Term] → Publish
+   - Click "Publish Schedule"
+   - Set publish date
+3. System Actions:
+   - Makes schedule visible to:
+     * Students
+     * Teachers
+     * Parents
+   - Sends notifications (optional)
+   - Creates schedule snapshot
+
+**Step 7: Generate Admit Cards**
+1. Navigate to: Exams → Exam Terms → [Select Term] → Admit Cards
+2. Select Class/Section
+3. Generate Admit Cards:
+   - Click "Generate Admit Cards"
+   - System generates for all students
+4. Admit Card Contains:
+   - Student Name and ID
+   - Exam Term Name
+   - Exam Schedule (all subjects)
+   - Room and Seat Number
+   - Instructions
+   - QR Code (for verification)
+5. Review Admit Cards:
+   - Preview sample
+   - Verify information
+6. Publish Admit Cards:
+   - Students can download from portal
+   - Or print and distribute
+   - System sends download link via email/SMS
+
 **Acceptance Criteria**:
 - Exam schedules are conflict-free
 - Room capacity is respected
@@ -1514,6 +2506,182 @@ The system interfaces with:
    - Marks correction request
    - Approval workflow
    - Audit trail
+
+**Detailed Step-by-Step Process**:
+
+**Step 1: Individual Marks Entry**
+1. Teacher logs in
+2. Navigate to: Exams → Marks Entry → Enter Marks
+3. Select Exam Term
+4. Select Class and Section
+5. Select Subject
+6. View Student List:
+   - System displays all students in class
+   - Shows exam components (CQ, MCQ, Practical)
+7. Enter Marks for Each Student:
+   - For each component:
+     * CQ Marks (if applicable)
+     * MCQ Marks (if applicable)
+     * Practical Marks (if applicable)
+   - System validates:
+     * Marks not exceeding maximum
+     * Marks not negative
+     * Required fields filled
+8. Save Marks:
+   - Click "Save" after each student
+   - Or "Save All" after all students
+   - System validates all entries
+   - If valid: Marks saved (draft)
+   - If invalid: Error messages shown
+
+**Step 2: Bulk Marks Entry (Excel Import)**
+1. Navigate to: Exams → Marks Entry → Bulk Import
+2. Download Template:
+   - Click "Download Excel Template"
+   - Template contains:
+     * Student ID column
+     * Student Name column
+     * Component columns (CQ, MCQ, Practical)
+3. Fill Template:
+   - Open downloaded Excel file
+   - Enter marks for all students
+   - Save file
+4. Upload Template:
+   - Click "Upload Excel File"
+   - Select filled template
+   - Click "Upload"
+5. System Validates:
+   - Checks file format
+   - Validates all marks
+   - Checks student IDs
+   - Verifies maximum marks
+6. Preview Import:
+   - System shows preview of data
+   - Highlights any errors
+   - Shows validation results
+7. Confirm Import:
+   - If no errors: Click "Confirm Import"
+   - System imports marks
+   - If errors: Correct Excel file and re-upload
+
+**Step 3: Marks Validation**
+1. System automatically validates:
+   - Maximum marks check:
+     * Each component ≤ maximum marks
+     * Total ≤ subject total marks
+   - Negative marks prevention:
+     * All marks ≥ 0
+   - Required field validation:
+     * All components filled (if required)
+2. View Validation Errors:
+   - System highlights errors
+   - Shows error messages
+   - Indicates which student/component
+3. Correct Errors:
+   - Fix invalid entries
+   - Re-save marks
+   - System re-validates
+
+**Step 4: Submit Marks**
+1. After all marks entered and validated:
+   - Navigate to: Exams → Marks Entry → Submit Marks
+   - Select Exam Term, Class, Subject
+2. Review Marks:
+   - View all entered marks
+   - Verify totals
+   - Check for any missing entries
+3. Submit Marks:
+   - Click "Submit Marks"
+   - System asks for confirmation
+   - Confirm submission
+4. System Actions:
+   - Locks marks (cannot edit)
+   - Changes status to "Submitted"
+   - Notifies Exam Controller
+   - Creates submission record
+   - Logs submission (audit trail)
+
+**Step 5: Unlock Request (if correction needed)**
+1. If marks need correction after submission:
+   - Navigate to: Exams → Marks Entry → Unlock Request
+   - Select submitted marks
+   - Enter reason for unlock
+   - Submit unlock request
+2. Exam Controller Reviews:
+   - Navigate to: Exams → Marks Entry → Unlock Requests
+   - View pending requests
+   - Review reason
+3. Approve/Reject:
+   - If Approve:
+     * Click "Approve Unlock"
+     * Marks unlocked for editing
+     * Teacher can make corrections
+   - If Reject:
+     * Click "Reject"
+     * Enter rejection reason
+     * Marks remain locked
+4. After Correction:
+   - Teacher makes corrections
+   - Re-submits marks
+   - System locks again
+
+**Step 6: Verification Process**
+1. Exam Controller accesses: Exams → Marks Entry → Verification
+2. View Submitted Marks:
+   - Filter by:
+     * Exam Term
+     * Class/Section
+     * Subject
+     * Teacher
+3. Review Marks:
+   - Check all students have marks
+   - Verify marks are within limits
+   - Check for anomalies
+4. System Detects Issues:
+   - Missing entries (students without marks)
+   - Invalid entries (marks exceeding limits)
+   - Incomplete entries (missing components)
+5. Flag Issues:
+   - Select problematic entries
+   - Add comments/notes
+   - Flag for teacher attention
+6. Approve Marks:
+   - If all correct:
+     * Click "Approve Marks"
+     * Status changes to "Verified"
+     * Ready for result processing
+   - If issues found:
+     * Request correction
+     * Marks sent back to teacher
+
+**Step 7: Recheck/Approval Process**
+1. If marks need correction after verification:
+   - Navigate to: Exams → Marks Entry → Correction Request
+   - Select marks to correct
+   - Enter correction details:
+     * Student
+     * Component
+     * Old marks
+     * New marks
+     * Reason for correction
+   - Submit correction request
+2. Approval Workflow:
+   - Request sent to Exam Controller
+   - Exam Controller reviews
+   - Approves or rejects
+3. If Approved:
+   - System updates marks
+   - Logs correction (audit trail)
+   - Notifies relevant parties
+4. Audit Trail:
+   - All changes logged:
+     * Who made change
+     * When changed
+     * What changed (old → new)
+     * Reason for change
+   - View audit log:
+     * Navigate to: Exams → Audit Log
+     * Filter by student/subject/date
 
 **Acceptance Criteria**:
 - Marks cannot be altered after submission without approval
