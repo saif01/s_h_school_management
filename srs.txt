@@ -1,0 +1,330 @@
+School Management System
+Below is a final, standard “complete School Management System (SMS/ERP)” workflow including all commonly expected modules (Academics + Fees + Accounting + HR/Payroll + Inventory/Assets + Library/Transport/Hostel + Communication + Security + Alumni + Reports + Year closing).
+You can use this as your final master workflow for SRS + development.
+________________________________________
+A) MASTER WORKFLOW (End-to-End)
+0) First Time Setup (Super Admin / System Admin)
+0.1 Organization & System Setup
+1.	Create School/Institute Profile (name, code/EIIN, logo, address, contacts).
+2.	Define campuses/branches (if multi-branch).
+3.	Set timezone, currency, language, numbering formats.
+4.	Configure:
+o	Email server / SMS gateway / WhatsApp provider (optional)
+o	Payment gateway (SSLCommerz/bKash/Nagad/card)
+o	Biometric/attendance device integration (optional)
+5.	Create role-based access control (RBAC):
+o	Super Admin, Principal, Academic Admin, Exam Controller, HR, Accountant, Cashier, Librarian, Transport, Hostel, Front Desk, Security, Teacher, Student, Parent
+6.	Configure audit logs + approval workflows + data retention.
+7.	Setup backups (daily DB, weekly full, offsite optional).
+________________________________________
+B) ACADEMIC OPERATIONS WORKFLOW
+1) Academic Year / Session Setup (Academic Admin)
+1.	Create Academic Session (e.g., 2026).
+2.	Setup academic structure:
+o	Class/Grade → Section → Group/Stream
+3.	Setup subjects:
+o	compulsory/optional, components (CQ/MCQ/Practical), marks rules, pass marks
+4.	Setup departments (Science/Arts etc. + staff departments).
+5.	Setup grading system (marks to grade/GPA).
+6.	Setup calendar: holidays, events, working days, bell schedule.
+________________________________________
+2) Admissions & Enrollment (Front Desk + Academic Admin + Accounts)
+2.1 Admission Setup
+1.	Create admission circular (classes, seats, fee, dates, requirements).
+2.	Configure application form fields (online/offline).
+3.	Set admission test/interview rules (optional).
+2.2 Application → Verification
+1.	Applicant submits form + documents.
+2.	System generates Application ID.
+3.	Officer verifies documents + eligibility checklist.
+2.3 Admission Test/Interview (Optional)
+1.	Create schedule, generate admit cards.
+2.	Conduct test, enter marks, publish merit/wait list.
+2.4 Final Admission & Student Profile Creation
+1.	Approve student.
+2.	Assign Class/Section/Group/Optional subject.
+3.	Generate Student ID + parent accounts.
+4.	Assign roll number rules (auto/manual).
+2.5 Admission Fees & Enrollment Confirmation
+1.	System generates admission invoice.
+2.	Payment accepted (cash/bank/online).
+3.	Receipt generated + ledger updated.
+4.	Student status becomes “Active”.
+________________________________________
+3) Student Lifecycle Management (Academic Admin + Front Desk)
+1.	Student status lifecycle:
+o	Applicant → Enrolled → Active → Promoted/Repeat → Transfer/Withdraw → Alumni
+2.	Transfer/Withdraw workflow:
+o	TC request → clearance checks (fees/library/hostel/transport) → approvals → TC issued → status changed
+3.	Re-admission workflow (if returning).
+________________________________________
+4) Timetable & Daily Academic Execution (Academic Admin + Teachers)
+4.1 Timetable Setup
+1.	Define periods, breaks, rooms, teacher availability.
+2.	Create class routine + teacher routine + room routine.
+3.	Publish timetable.
+4.2 Substitute Teacher Workflow (Standard)
+1.	Teacher marks leave/unavailability.
+2.	System suggests available substitute teachers.
+3.	Admin assigns substitute → routine updates for that day.
+4.3 Class Diary / Lesson Delivered (Standard)
+1.	Teacher logs daily lesson delivered (chapter/topic).
+2.	Attach materials / homework reference.
+3.	Class teacher/principal can review.
+________________________________________
+5) Attendance Management (Teachers + HR + Parents)
+5.1 Student Attendance
+1.	Daily or period-wise attendance taken.
+2.	Late/leave/absent rules applied.
+3.	Automatic notifications to parents (optional).
+4.	Attendance reports (daily/monthly/term).
+5.2 Staff Attendance
+1.	Attendance captured (manual/biometric).
+2.	Late/overtime rules processed.
+3.	Attendance feeds Payroll (later).
+________________________________________
+6) Homework, Assignment, LMS-lite (Teachers)
+1.	Teacher posts:
+o	Homework/Assignment, due date, marks, attachments
+2.	Student submits (online) or teacher marks offline.
+3.	Teacher reviews, grades, feedback.
+4.	Parents see progress.
+5.	(Optional) Quiz/online test module:
+o	MCQ quiz → auto grade → report.
+________________________________________
+7) Discipline, Counseling & Student Support (Class Teacher + Admin)
+1.	Discipline record:
+o	incident type, description, evidence
+2.	Actions:
+o	warning, guardian call, counseling, suspension (if policy)
+3.	Sensitive records access control.
+4.	Parent notifications (optional).
+7.1 Health/Medical (Standard in many)
+1.	Store blood group, allergy, medical notes.
+2.	Clinic log (date, issue, action).
+________________________________________
+C) EXAMS & RESULTS WORKFLOW
+8) Exam Planning (Exam Controller)
+1.	Create exam term (CT/Mid/Final).
+2.	Define marks distribution rules per subject.
+3.	Create exam routine + room/seat plan.
+4.	Assign invigilators + duties.
+5.	Publish schedule to portal.
+9) Marks Entry & Verification (Teachers + Exam Controller)
+1.	Teacher enters marks (component-wise).
+2.	Submit marks → lock after submission.
+3.	Controller checks missing/invalid entries.
+4.	Recheck/approval process (optional).
+10) Result Processing & Publishing (Exam Controller + Principal)
+1.	Run result generation:
+o	total, grade, GPA, optional subject rules
+2.	Produce:
+o	report cards, merit list, fail list, analytics
+3.	Publish to student/parent portal.
+4.	Print report cards + transcripts.
+11) Promotion & Academic Year Transition (Academic Admin)
+1.	Apply promotion rules:
+o	pass criteria, compulsory subject rules
+2.	Promote to next class OR mark repeat/retake.
+3.	Prepare next session enrollment.
+________________________________________
+D) FEES + FINANCE + FULL ACCOUNTING (ERP STANDARD)
+12) Fee Management (Accounts)
+12.1 Fee Setup
+1.	Setup fee heads (tuition, exam, admission, transport, hostel, etc.).
+2.	Setup class-wise and category-wise fees.
+3.	Setup scholarship/waiver rules.
+4.	Define fine rules and installment plan.
+12.2 Billing & Invoicing
+1.	System generates monthly/term invoices automatically.
+2.	Applies:
+o	previous dues, waivers, fines
+3.	Notifies parents (optional).
+12.3 Payment Collection (Cashier/Online)
+1.	Payment methods:
+o	Cash, Bank, Card, Mobile banking, Online gateway
+2.	Partial/full payment supported.
+3.	Generate receipt + update student ledger.
+4.	Refund workflow (standard):
+o	refund request → approval → payment out → ledger adjustment
+12.4 Dues Management
+1.	Due list by class/section/month.
+2.	Reminder SMS/email.
+3.	Defaulter rules (optional):
+o	exam admit restriction or portal restriction (policy-based)
+________________________________________
+13) Full Accounting Module (Standard ERP Level)
+13.1 Accounting Setup (Accountant)
+1.	Create Chart of Accounts (COA):
+o	Assets, Liabilities, Income, Expense, Equity
+2.	Setup:
+o	Cash accounts
+o	Bank accounts
+o	Fee income accounts
+o	Expense categories
+13.2 Voucher Workflow
+1.	Journal Voucher (JV) – adjustments
+2.	Payment Voucher (PV) – payments/expenses
+3.	Receipt Voucher (RV) – receipts other than fees
+4.	Contra Voucher (CV) – bank↔cash transfer
+5.	Approval workflow (optional).
+13.3 Bank Management
+1.	Bank deposit slip generation.
+2.	Bank reconciliation (match statement).
+3.	Cheque management (optional).
+13.4 Financial Reports
+•	Trial Balance
+•	Profit & Loss
+•	Balance Sheet
+•	Cash Flow (optional)
+•	Fee collection vs expenses
+________________________________________
+E) HR + PAYROLL (STANDARD)
+14) HR Setup & Staff Management (HR/Admin)
+1.	Add staff profiles, contracts, documents.
+2.	Assign role + departments.
+3.	Maintain staff history (promotion, transfer).
+15) Leave Management (HR)
+1.	Leave types & balance rules.
+2.	Apply leave → approval → update attendance.
+16) Payroll Processing (HR + Accounts)
+1.	Salary structure setup:
+o	Basic + allowances + deductions
+2.	Payroll cycle:
+o	Pull attendance/late/overtime
+o	Apply deductions/bonus
+3.	Generate payslips.
+4.	Salary disbursement record:
+o	cash/bank transfer
+5.	Payroll reports.
+________________________________________
+F) PROCUREMENT + INVENTORY + ASSET MANAGEMENT (STANDARD)
+17) Procurement Workflow (Store/Accounts/Admin)
+1.	Purchase Requisition (PR) raised by department.
+2.	Approval workflow.
+3.	Purchase Order (PO) to supplier.
+4.	Goods Receive Note (GRN) on delivery.
+5.	Stock update + invoice entry.
+6.	Supplier payment (accounts voucher).
+18) Inventory/Store Management
+1.	Item master setup (stationery, lab supplies).
+2.	Stock in/out, minimum stock alert.
+3.	Issue items to departments (issue slip).
+4.	Stock audit + adjustments.
+19) Asset Management (IT/Admin)
+1.	Asset register (computers, projector, furniture).
+2.	Assign asset to room/staff.
+3.	Maintenance schedule + service logs.
+4.	Depreciation (optional).
+5.	Asset disposal workflow.
+________________________________________
+G) AUXILIARY MODULES (STANDARD IN MOST FULL SMS)
+20) Library Management (Librarian)
+1.	Catalog books, barcode, copies.
+2.	Issue/return/renew.
+3.	Fine management (integrate with fees).
+4.	Reports: overdue, inventory.
+21) Transport Management (Transport Manager)
+1.	Vehicles, drivers, docs, routes, stops.
+2.	Student route allocation.
+3.	Transport fee auto-billing.
+4.	Driver attendance/logs (optional).
+22) Hostel Management (Hostel Manager)
+1.	Rooms/beds allocation.
+2.	Hostel fee auto-billing.
+3.	Visitor log + discipline.
+4.	Meal plan (optional).
+23) Canteen / POS (Optional but common)
+1.	Item setup, pricing.
+2.	Student wallet/card (optional).
+3.	Sales reports.
+________________________________________
+H) COMMUNICATION + SECURITY + FRONT DESK
+24) Notice & Messaging (Admin/Principal/Teacher)
+1.	Publish notices (targeted by class/role).
+2.	SMS/email/WhatsApp broadcast (optional).
+3.	Two-way messaging (teacher↔parent) with logs.
+25) Front Desk & Gate Security (Standard in many)
+1.	Visitor management:
+o	visitor details, purpose, in/out time, ID proof
+2.	Gate pass:
+o	early leave pass, who collected, time
+3.	Dispatch/receiving register (courier/logbook).
+26) Events, Clubs & Activities (Standard)
+1.	Create events, schedule, participants.
+2.	Clubs membership & activity logs.
+3.	Student achievements & certificates.
+________________________________________
+I) DOCUMENTS & CERTIFICATE MANAGEMENT
+27) Certificate & ID Management (Admin)
+1.	Templates: TC, testimonial, bonafide, character, transcript.
+2.	Generate with unique certificate number.
+3.	QR verification (optional but modern standard).
+4.	Approval + print + archive.
+________________________________________
+J) REPORTS, DASHBOARDS, COMPLIANCE
+28) Role-based Dashboards
+•	Principal: performance, attendance, finance summary
+•	Academic Admin: timetable, exam progress, promotions
+•	Accounts: collection, dues, daily cashbook, P&L
+•	HR: attendance, leave, payroll
+•	Teacher: classes, attendance pending, assignment grading
+•	Parent/Student: attendance, fees, homework, results, notices
+29) Reports & Exports (Standard)
+•	Attendance reports
+•	Exam analytics (subject-wise pass rate)
+•	Fee collection & defaulter
+•	Accounting statements
+•	Payroll reports
+•	Inventory/asset reports
+•	Student strength reports
+30) Security & Compliance
+1.	RBAC permissions strictly enforced.
+2.	Audit trail for:
+o	marks edits, fee edits, certificates, user changes
+3.	Backup + restore test.
+4.	Data privacy for minors:
+o	restricted access to health/counseling records
+________________________________________
+K) YEAR-END / SESSION CLOSING (FINAL STANDARD)
+31) Academic Closing
+1.	Lock results and reports for the session.
+2.	Promote/retain students.
+3.	Generate annual transcripts + certificates.
+4.	Graduates moved to Alumni.
+32) Finance Closing
+1.	Close fee cycle, freeze old invoices (or carry forward dues).
+2.	Close accounting period:
+o	adjustments, final vouchers
+3.	Generate final financial statements.
+4.	Start new financial year (if separate from academic year).
+33) System Archival
+1.	Archive logs, backup final snapshot.
+2.	Reset sequences where required (optional).
+________________________________________
+Final “Standard Modules List” (Complete)
+1.	Setup & Settings
+2.	RBAC + Users
+3.	Academic session/class/subject
+4.	Admissions & enrollment
+5.	Student lifecycle (TC/withdraw/alumni)
+6.	Timetable + substitute + class diary
+7.	Attendance (student & staff)
+8.	Homework/Assignments/LMS-lite
+9.	Discipline + counseling + health
+10.	Exams + marks + results + promotion
+11.	Fees + invoicing + payment gateway + refunds
+12.	Full Accounting (COA/GL/Vouchers/Bank/Reports)
+13.	HR + leave + payroll
+14.	Procurement + suppliers + inventory/store
+15.	Asset management + maintenance
+16.	Library
+17.	Transport
+18.	Hostel
+19.	Front desk + visitor/gate pass
+20.	Communication (notice, SMS/email/WhatsApp)
+21.	Events/clubs/activities
+22.	Certificates/document vault
+23.	Reports & dashboards
+24.	Security/audit/backup
+25.	Year/session/financial closing
