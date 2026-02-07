@@ -438,11 +438,12 @@ This SRS describes a **simple, small school management system** for a single sch
 - **Results:** Result summary, published flag.
 - **Fees:** FeeHead, FeeStructure (class-wise), Invoice, Payment, Receipt.
 - **Communication:** Notice (with target class/section).
-- **Optional:** Certificate (TC/Testimonial template and generated docs).
+- **Optional:** Certificate (TC/Testimonial template and generated docs); `transfer_certificates` table for TC unique number and audit.
 
 ### 6.2 Key Relationships
 - Student → Parent (one or two); Student → Enrollment (per session) → Class, Section.
-- Teacher → Timetable entries (Class, Section, Subject).
+- Student.user_id, Parent.user_id → User (for Student/Parent login); Staff.user_id → User (for Teacher/Accountant login).
+- Teacher → Timetable entries (Class, Section, Subject); Exam → exam_classes → Class.
 - Invoice → Student, FeeStructure; Payment → Invoice.
 - Marks → Student, Exam, Subject.
 
@@ -500,12 +501,14 @@ This SRS describes a **simple, small school management system** for a single sch
 | `enrollments`       | Student enrollment (session, class, section) |
 | `users`             | Login accounts                       |
 | `roles`             | Role definitions                     |
-| `user_roles`        | User–role assignment                 |
+| `user_roles`        | User–role assignment (one role per user) |
+| `class_subjects`    | Subject–class assignment (FR-1.3)   |
 | `periods`           | Period/bell schedule                 |
 | `timetable_entries` | Class timetable (day, period, subject, teacher) |
 | `student_attendance`| Daily student attendance             |
 | `staff_attendance`  | Daily staff attendance               |
 | `exams`             | Exam definitions                     |
+| `exam_classes`      | Exam–class link (FR-5.1)             |
 | `exam_subjects`     | Exam–subject (max marks)             |
 | `marks`             | Student marks (exam, subject)        |
 | `results`           | Processed result summary             |
@@ -516,6 +519,7 @@ This SRS describes a **simple, small school management system** for a single sch
 | `payments`          | Payment records                      |
 | `notices`           | Notice/announcements                 |
 | `notice_targets`    | Notice–class/section targeting       |
+| `transfer_certificates` | TC issuance (unique number, audit) |
 | `audit_logs`        | Sensitive operation logs (see 6.6)   |
 
 #### 6.5.5 Table Fields (Schema)
@@ -592,7 +596,7 @@ All tables include `created_at`, `updated_at` (TIMESTAMP, NOT NULL) and `created
 | updated_at     | TIMESTAMP       | No            | —      | CURRENT     | Last update time        |
 | created_by     | BIGINT          | Yes           | FK     | —           | → users.id (who created) |
 | updated_by     | BIGINT          | Yes           | FK     | —           | → users.id (who last updated) |
-| UNIQUE(user_id, role_id) | —       | —            | —      | —           | One role per user pair  |
+| UNIQUE(user_id) | —               | —             | —      | —           | One role per user (FR-1.2)    |
 
 **classes**
 | **Field**             | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
@@ -621,6 +625,18 @@ All tables include `created_at`, `updated_at` (TIMESTAMP, NOT NULL) and `created
 | created_by     | BIGINT          | Yes           | FK     | —           | → users.id (who created) |
 | updated_by     | BIGINT          | Yes           | FK     | —           | → users.id (who last updated) |
 | UNIQUE(class_id, code) | —          | —            | —      | —           | Unique per class        |
+
+**class_subjects** (FR-1.3: subjects assigned to classes)
+| **Field**      | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
+|----------------|-----------------|---------------|--------|-------------|-------------------------|
+| id             | BIGINT          | No            | PK     | —           | Unique ID               |
+| class_id       | BIGINT          | No            | FK     | —           | → classes.id            |
+| subject_id     | BIGINT          | No            | FK     | —           | → subjects.id           |
+| created_at     | TIMESTAMP       | No            | —      | CURRENT     | Insert time             |
+| updated_at     | TIMESTAMP       | No            | —      | CURRENT     | Last update time        |
+| created_by     | BIGINT          | Yes           | FK     | —           | → users.id (who created) |
+| updated_by     | BIGINT          | Yes           | FK     | —           | → users.id (who last updated) |
+| UNIQUE(class_id, subject_id) | —   | —            | —      | —           | Unique per class-subject |
 
 **subjects**
 | **Field**          | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
@@ -684,6 +700,7 @@ All tables include `created_at`, `updated_at` (TIMESTAMP, NOT NULL) and `created
 |--------------------|-----------------|---------------|--------|-------------|-------------------------|
 | id                 | BIGINT          | No            | PK     | —           | Unique ID               |
 | organization_id    | BIGINT          | No            | FK     | —           | → organizations.id       |
+| user_id            | BIGINT          | Yes           | FK     | —           | → users.id (for Student login) |
 | student_id         | VARCHAR(50)     | No            | UNIQUE | —           | Roll/ID (e.g. STU-2026-001) |
 | name               | VARCHAR(255)    | No            | —      | —           | Student name             |
 | dob                | DATE            | Yes           | —      | —           | Date of birth            |
@@ -703,6 +720,7 @@ All tables include `created_at`, `updated_at` (TIMESTAMP, NOT NULL) and `created
 |--------------------|-----------------|---------------|--------|-------------|-------------------------|
 | id                 | BIGINT          | No            | PK     | —           | Unique ID               |
 | organization_id    | BIGINT          | No            | FK     | —           | → organizations.id       |
+| user_id            | BIGINT          | Yes           | FK     | —           | → users.id (for Parent login) |
 | name               | VARCHAR(255)    | No            | —      | —           | Parent/guardian name    |
 | phone              | VARCHAR(50)     | Yes           | —      | —           | Phone                   |
 | email              | VARCHAR(255)    | Yes           | —      | —           | Email                   |
@@ -810,6 +828,18 @@ All tables include `created_at`, `updated_at` (TIMESTAMP, NOT NULL) and `created
 | updated_at            | TIMESTAMP       | No            | —      | CURRENT     | Last update time        |
 | created_by            | BIGINT          | Yes           | FK     | —           | → users.id (who created) |
 | updated_by            | BIGINT          | Yes           | FK     | —           | → users.id (who last updated) |
+
+**exam_classes** (FR-5.1: exam linked to class(es))
+| **Field**      | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
+|----------------|-----------------|---------------|--------|-------------|-------------------------|
+| id             | BIGINT          | No            | PK     | —           | Unique ID               |
+| exam_id        | BIGINT          | No            | FK     | —           | → exams.id              |
+| class_id       | BIGINT          | No            | FK     | —           | → classes.id            |
+| created_at     | TIMESTAMP       | No            | —      | CURRENT     | Insert time             |
+| updated_at     | TIMESTAMP       | No            | —      | CURRENT     | Last update time        |
+| created_by     | BIGINT          | Yes           | FK     | —           | → users.id (who created) |
+| updated_by     | BIGINT          | Yes           | FK     | —           | → users.id (who last updated) |
+| UNIQUE(exam_id, class_id) | —     | —            | —      | —           | One row per exam-class  |
 
 **exam_subjects**
 | **Field**      | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
@@ -951,6 +981,19 @@ All tables include `created_at`, `updated_at` (TIMESTAMP, NOT NULL) and `created
 | created_by     | BIGINT          | Yes           | FK     | —           | → users.id (who created) |
 | updated_by     | BIGINT          | Yes           | FK     | —           | → users.id (who last updated) |
 
+**transfer_certificates** (FR-9.1: TC issuance – unique number, audit)
+| **Field**      | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
+|----------------|-----------------|---------------|--------|-------------|-------------------------|
+| id             | BIGINT          | No            | PK     | —           | Unique ID               |
+| student_id     | BIGINT          | No            | FK     | —           | → students.id           |
+| tc_number      | VARCHAR(50)     | No            | UNIQUE | —           | Unique TC number        |
+| date_of_issue  | DATE            | No            | —      | —           | Date of issue           |
+| reason         | VARCHAR(255)    | Yes           | —      | —           | Reason for leaving      |
+| created_at     | TIMESTAMP       | No            | —      | CURRENT     | Insert time             |
+| updated_at     | TIMESTAMP       | No            | —      | CURRENT     | Last update time        |
+| created_by     | BIGINT          | Yes           | FK     | —           | → users.id (who created) |
+| updated_by     | BIGINT          | Yes           | FK     | —           | → users.id (who last updated) |
+
 **audit_logs** (created_at and created_by only; no updated_at/updated_by – log rows are immutable)
 | **Field**      | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
 |----------------|-----------------|---------------|--------|-------------|-------------------------|
@@ -1052,6 +1095,7 @@ Log all changes to sensitive data for accountability, compliance, and troublesho
 - **Admin:** Setup, user creation, academic setup, year-end (2–3 hours).
 - **Teachers:** Attendance, marks entry, timetable view (1–2 hours).
 - **Accountant:** Fee setup, invoicing, payment, receipts (1–2 hours).
+- **Students/Parents:** Optional brief guide or in-app hints for login and viewing dashboard (attendance, fees, results, notices).
 - **Documentation:** Short user guide (PDF or online) per role; in-app help optional.
 
 ---
@@ -1071,6 +1115,14 @@ Log all changes to sensitive data for accountability, compliance, and troublesho
 | Integrations        | Payment, SMS, WhatsApp, etc.  | Optional email/SMS                |
 | Audit logging       | Full audit trail              | Sensitive sections only (6.6)     |
 | Scale               | 100–10,000+ students          | 50–500 students                   |
+
+---
+
+### Document review (2026-02-07)
+- Schema aligned with functional requirements: added **students.user_id** and **parents.user_id** for Student/Parent login; **class_subjects** for FR-1.3 (subjects assigned to classes); **exam_classes** for FR-5.1 (exam linked to class(es)); **transfer_certificates** for TC unique number and audit.
+- **user_roles:** Enforced one role per user via UNIQUE(user_id) per FR-1.2.
+- **6.5.4:** Removed duplicate `exam_classes` from migration list. **6.2:** Added user-link and exam–class relationships.
+- **Optional (not required for v1):** FR-1.3 “Academic calendar: holidays and key dates” may use a simple `holidays` or `calendar_events` table if implemented. Testimonial (FR-9.1) can be generated on demand without a separate table; add a `testimonials` issuance table only if unique numbering/audit is needed for testimonials.
 
 ---
 
