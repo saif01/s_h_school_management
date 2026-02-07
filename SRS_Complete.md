@@ -485,6 +485,9 @@ This SRS describes a **simple, small school management system** for a single sch
 - Or numeric: `001_create_users_table`, `002_add_created_at_to_legacy_table`.
 
 #### 6.5.4 Tables Requiring Migrations (with `created_at`, `updated_at`)
+
+*This list includes both already-implemented tables (see 6.5.4a) and planned tables. Implemented ones have schema in 6.5.5 marked “(implemented – see 6.5.4a)”.*
+
 | **Table**           | **Purpose**                          |
 |---------------------|--------------------------------------|
 | `organizations`     | School profile, settings             |
@@ -501,7 +504,11 @@ This SRS describes a **simple, small school management system** for a single sch
 | `enrollments`       | Student enrollment (session, class, section) |
 | `users`             | Login accounts                       |
 | `roles`             | Role definitions                     |
-| `user_roles`        | User–role assignment (one role per user) |
+| `permissions`       | Permission definitions               |
+| `role_permission`   | Role–permission assignment           |
+| `user_role`         | User–role assignment (pivot; one primary role per user) |
+| `settings`           | Key-value settings (general, seo, email, etc.) |
+| `login_logs`         | Login attempt audit (success/failed) |
 | `class_subjects`    | Subject–class assignment (FR-1.3)   |
 | `periods`           | Period/bell schedule                 |
 | `timetable_entries` | Class timetable (day, period, subject, teacher) |
@@ -521,6 +528,28 @@ This SRS describes a **simple, small school management system** for a single sch
 | `notice_targets`    | Notice–class/section targeting       |
 | `transfer_certificates` | TC issuance (unique number, audit) |
 | `audit_logs`        | Sensitive operation logs (see 6.6)   |
+
+#### 6.5.4a Current migration files (implemented)
+
+The following tables and columns exist in the project’s migration folder. Schema below (6.5.5) is aligned with these migrations for **users**, **roles**, **user_role**, **permissions**, **role_permission**, **settings**, **login_logs**, and framework tables.
+
+| **Migration file** | **Tables / changes** |
+|--------------------|------------------------|
+| `0001_01_01_000000_create_users_table.php` | `users`, `password_reset_tokens`, `sessions` |
+| `0001_01_01_000001_create_cache_table.php` | `cache`, `cache_locks` |
+| `0001_01_01_000002_create_jobs_table.php` | `jobs`, `job_batches`, `failed_jobs` |
+| `2025_11_22_200555_create_settings_table.php` | `settings` |
+| `2025_11_22_200626_add_role_to_users_table.php` | `users`: +`role`, +`avatar` |
+| `2025_11_22_201228_create_personal_access_tokens_table.php` | `personal_access_tokens` |
+| `2025_11_22_210651_create_permissions_table.php` | `permissions` |
+| `2025_11_22_210651_create_roles_table.php` | `roles` |
+| `2025_11_22_210652_create_role_permission_table.php` | `role_permission` |
+| `2025_11_22_210652_create_user_role_table.php` | `user_role` |
+| `2025_11_23_170700_create_sessions_table_if_not_exists.php` | `sessions` (if not exists) |
+| `2025_11_23_180622_create_login_logs_table.php` | `login_logs` |
+| `2025_11_27_115627_sync_user_role_fields.php` | (no schema change) |
+
+**Framework / support tables (no created_by/updated_by):** `password_reset_tokens`, `sessions`, `cache`, `cache_locks`, `jobs`, `job_batches`, `failed_jobs`, `personal_access_tokens` — used by Laravel for auth, cache, queue, and API tokens.
 
 #### 6.5.5 Table Fields (Schema)
 
@@ -560,43 +589,100 @@ All tables include `created_at`, `updated_at` (TIMESTAMP, NOT NULL) and `created
 | created_by         | BIGINT          | Yes           | FK     | —           | → users.id (who created) |
 | updated_by         | BIGINT          | Yes           | FK     | —           | → users.id (who last updated) |
 
-**roles**
+**roles** *(implemented – see 6.5.4a)*
 | **Field**      | **Type**        | **Nullable** | **Key** | **Default** | **Description**                    |
 |----------------|-----------------|---------------|--------|-------------|------------------------------------|
 | id             | BIGINT          | No            | PK     | —           | Unique ID                          |
-| name           | VARCHAR(255)    | No            | —      | —           | Role display name                   |
+| name           | VARCHAR(255)    | No            | UNIQUE | —           | Role display name                   |
 | slug           | VARCHAR(255)    | No            | UNIQUE | —           | admin, teacher, accountant, student, parent |
+| description    | TEXT            | Yes           | —      | —           | Role description                    |
+| is_system       | BOOLEAN         | No            | —      | false       | System roles cannot be deleted      |
+| is_active       | BOOLEAN         | No            | —      | true        | Role active flag                    |
+| order           | INT             | No            | —      | 0           | Display order                       |
 | created_at     | TIMESTAMP       | No            | —      | CURRENT     | Insert time                         |
 | updated_at     | TIMESTAMP       | No            | —      | CURRENT     | Last update time                    |
-| created_by     | BIGINT          | Yes           | FK     | —           | → users.id (who created)            |
-| updated_by     | BIGINT          | Yes           | FK     | —           | → users.id (who last updated)       |
 
-**users**
-| **Field**          | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
-|--------------------|-----------------|---------------|--------|-------------|-------------------------|
-| id                 | BIGINT          | No            | PK     | —           | Unique ID               |
-| organization_id    | BIGINT          | No            | FK     | —           | → organizations.id       |
-| name               | VARCHAR(255)    | No            | —      | —           | User display name       |
-| email              | VARCHAR(255)    | No            | UNIQUE | —           | Login email              |
-| password           | VARCHAR(255)    | No            | —      | —           | Hashed password          |
-| remember_token     | VARCHAR(100)   | Yes           | —      | —           | Remember-me token        |
-| is_active          | BOOLEAN         | No            | —      | true        | Account active flag      |
-| created_at         | TIMESTAMP       | No            | —      | CURRENT     | Insert time              |
-| updated_at         | TIMESTAMP       | No            | —      | CURRENT     | Last update time         |
-| created_by         | BIGINT          | Yes           | FK     | —           | → users.id (who created) |
-| updated_by         | BIGINT          | Yes           | FK     | —           | → users.id (who last updated) |
+**users** *(implemented – see 6.5.4a)*
+| **Field**            | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
+|----------------------|-----------------|---------------|--------|-------------|-------------------------|
+| id                   | BIGINT          | No            | PK     | —           | Unique ID               |
+| name                 | VARCHAR(255)    | No            | —      | —           | User display name       |
+| email                | VARCHAR(255)    | No            | UNIQUE | —           | Login email              |
+| email_verified_at    | TIMESTAMP       | Yes           | —      | —           | Email verification time  |
+| password             | VARCHAR(255)    | No            | —      | —           | Hashed password          |
+| role                 | VARCHAR(255)    | No            | —      | 'admin'     | Legacy role (admin, editor, hr, staff) |
+| avatar               | VARCHAR(255)    | Yes           | —      | —           | Avatar file path         |
+| phone                | VARCHAR(255)    | Yes           | —      | —           | Phone                    |
+| date_of_birth        | DATE            | Yes           | —      | —           | Date of birth            |
+| gender               | ENUM            | Yes           | —      | —           | male, female, other      |
+| address              | TEXT            | Yes           | —      | —           | Address                  |
+| city                 | VARCHAR(255)    | Yes           | —      | —           | City                     |
+| state                | VARCHAR(255)    | Yes           | —      | —           | State                    |
+| country              | VARCHAR(255)    | Yes           | —      | —           | Country                  |
+| postal_code          | VARCHAR(255)    | Yes           | —      | —           | Postal code              |
+| bio                  | TEXT            | Yes           | —      | —           | Bio                      |
+| remember_token       | VARCHAR(100)    | Yes           | —      | —           | Remember-me token        |
+| created_at           | TIMESTAMP       | No            | —      | CURRENT     | Insert time              |
+| updated_at           | TIMESTAMP       | No            | —      | CURRENT     | Last update time         |
 
-**user_roles**
+*Note: RBAC uses `user_role` (many-to-many). `organization_id`, `created_by`, `updated_by` are planned for future migrations when organization and audit fields are added.*
+
+**user_role** *(implemented – see 6.5.4a; pivot table name is `user_role`)*
 | **Field**      | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
 |----------------|-----------------|---------------|--------|-------------|-------------------------|
 | id             | BIGINT          | No            | PK     | —           | Unique ID               |
-| user_id        | BIGINT          | No            | FK     | —           | → users.id              |
-| role_id        | BIGINT          | No            | FK     | —           | → roles.id               |
+| user_id        | BIGINT          | No            | FK     | —           | → users.id (cascade)    |
+| role_id        | BIGINT          | No            | FK     | —           | → roles.id (cascade)    |
 | created_at     | TIMESTAMP       | No            | —      | CURRENT     | Insert time              |
 | updated_at     | TIMESTAMP       | No            | —      | CURRENT     | Last update time        |
-| created_by     | BIGINT          | Yes           | FK     | —           | → users.id (who created) |
-| updated_by     | BIGINT          | Yes           | FK     | —           | → users.id (who last updated) |
-| UNIQUE(user_id) | —               | —             | —      | —           | One role per user (FR-1.2)    |
+| UNIQUE(user_id, role_id) | —     | —            | —      | —           | One assignment per user-role pair; one primary role per user (FR-1.2) |
+
+**permissions** *(implemented – see 6.5.4a)*
+| **Field**      | **Type**        | **Nullable** | **Key** | **Default** | **Description**                    |
+|----------------|-----------------|---------------|--------|-------------|------------------------------------|
+| id             | BIGINT          | No            | PK     | —           | Unique ID                          |
+| name           | VARCHAR(255)    | No            | —      | —           | Permission display name             |
+| slug           | VARCHAR(255)    | No            | UNIQUE | —           | Permission slug (e.g. manage-users) |
+| group          | VARCHAR(255)    | No            | —      | 'general'    | Group (general, content, users, etc.) |
+| description    | TEXT            | Yes           | —      | —           | Description                         |
+| created_at     | TIMESTAMP       | No            | —      | CURRENT     | Insert time                         |
+| updated_at     | TIMESTAMP       | No            | —      | CURRENT     | Last update time                    |
+
+**role_permission** *(implemented – see 6.5.4a)*
+| **Field**        | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
+|------------------|-----------------|---------------|--------|-------------|-------------------------|
+| id               | BIGINT          | No            | PK     | —           | Unique ID               |
+| role_id          | BIGINT          | No            | FK     | —           | → roles.id (cascade)    |
+| permission_id    | BIGINT          | No            | FK     | —           | → permissions.id (cascade) |
+| created_at       | TIMESTAMP       | No            | —      | CURRENT     | Insert time              |
+| updated_at       | TIMESTAMP       | No            | —      | CURRENT     | Last update time        |
+| UNIQUE(role_id, permission_id) | — | —      | —      | —           | One row per role-permission pair |
+
+**settings** *(implemented – see 6.5.4a)*
+| **Field**      | **Type**        | **Nullable** | **Key** | **Default** | **Description**                    |
+|----------------|-----------------|---------------|--------|-------------|------------------------------------|
+| id             | BIGINT          | No            | PK     | —           | Unique ID                          |
+| key            | VARCHAR(255)    | No            | UNIQUE | —           | Setting key                         |
+| value          | TEXT            | Yes           | —      | —           | Setting value                       |
+| type           | VARCHAR(255)    | No            | —      | 'text'      | text, textarea, image, boolean, json |
+| group          | VARCHAR(255)    | No            | —      | 'general'   | general, seo, email, social, branding |
+| description    | TEXT            | Yes           | —      | —           | Description                         |
+| created_at     | TIMESTAMP       | No            | —      | CURRENT     | Insert time                         |
+| updated_at     | TIMESTAMP       | No            | —      | CURRENT     | Last update time                    |
+
+**login_logs** *(implemented – see 6.5.4a)*
+| **Field**        | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |
+|------------------|-----------------|---------------|--------|-------------|-------------------------|
+| id               | BIGINT          | No            | PK     | —           | Unique ID               |
+| user_id          | BIGINT          | Yes           | FK     | —           | → users.id (set null on delete) |
+| email            | VARCHAR(255)    | No            | INDEX  | —           | Email used for login attempt |
+| ip_address       | VARCHAR(45)     | Yes           | —      | —           | Client IP               |
+| user_agent       | TEXT            | Yes           | —      | —           | Browser/client          |
+| status           | ENUM            | No            | INDEX  | 'failed'    | success, failed         |
+| failure_reason   | VARCHAR(255)    | Yes           | —      | —           | e.g. invalid_credentials |
+| logged_in_at     | TIMESTAMP       | Yes           | —      | —           | When login succeeded    |
+| created_at       | TIMESTAMP       | No            | INDEX  | CURRENT     | Insert time              |
+| updated_at       | TIMESTAMP       | No            | —      | CURRENT     | Last update time        |
 
 **classes**
 | **Field**             | **Type**        | **Nullable** | **Key** | **Default** | **Description**        |

@@ -5,94 +5,95 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Role;
-use Illuminate\Support\Facades\Hash;
 
 class AdminUserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Define demo users for each role
-        $demoUsers = [
+        $defaultPassword = 'password'; // hashed by User model cast
+        $defaultLocation = [
+            'phone' => null,
+            'city' => 'Dhaka',
+            'state' => 'Dhaka',
+            'country' => 'Bangladesh',
+        ];
+
+        // 1. Super User (full system access)
+        $superUser = User::updateOrCreate(
+            ['email' => 'superadmin@school.com'],
             [
-                'name' => 'Administrator',
-                'email' => 'admin@mail.com',
-                'password' => Hash::make('password'),
-                'phone' => '+8801707080401',
+                'name' => 'Super Admin',
+                'password' => $defaultPassword,
                 'gender' => 'male',
-                'city' => 'Dhaka',
-                'state' => 'Dhaka',
-                'country' => 'Bangladesh',
-                'bio' => 'System Administrator with full access to all features and settings.',
-                'role_slug' => 'administrator',
+                'bio' => 'Super user with full access to all modules and settings.',
+                ...$defaultLocation,
+            ]
+        );
+        $this->assignRoleBySlug($superUser, 'admin');
+
+        // 2. Five users – one per SRS role (Admin, Teacher, Accountant, Student, Parent)
+        $roleUsers = [
+            [
+                'name' => 'School Admin',
+                'email' => 'admin@school.com',
+                'gender' => 'male',
+                'bio' => 'School administrator. Full access to setup, users, and all modules.',
+                'role_slug' => 'admin',
             ],
             [
-                'name' => 'Content Manager',
-                'email' => 'content@mail.com',
-                'password' => Hash::make('password'),
-                'phone' => '+8801707080402',
+                'name' => 'Demo Teacher',
+                'email' => 'teacher@school.com',
                 'gender' => 'female',
-                'city' => 'Dhaka',
-                'state' => 'Dhaka',
-                'country' => 'Bangladesh',
-                'bio' => 'Content Manager responsible for managing site content including about, services, products, and blog posts.',
-                'role_slug' => 'content-manager',
+                'bio' => 'Teacher. Own classes/sections; attendance, marks, timetable; view students.',
+                'role_slug' => 'teacher',
             ],
             [
-                'name' => 'Marketing Manager',
-                'email' => 'marketing@mail.com',
-                'password' => Hash::make('password'),
-                'phone' => '+8801707080403',
+                'name' => 'Demo Accountant',
+                'email' => 'accountant@school.com',
                 'gender' => 'male',
-                'city' => 'Dhaka',
-                'state' => 'Dhaka',
-                'country' => 'Bangladesh',
-                'bio' => 'Marketing Manager handling inbound leads, newsletters, and marketing content.',
-                'role_slug' => 'marketing-manager',
+                'bio' => 'Accountant. Fees, invoices, receipts, fee reports only.',
+                'role_slug' => 'accountant',
             ],
             [
-                'name' => 'HR Manager',
-                'email' => 'hr@mail.com',
-                'password' => Hash::make('password'),
-                'phone' => '+8801707080404',
+                'name' => 'Demo Student',
+                'email' => 'student@school.com',
+                'gender' => 'male',
+                'bio' => 'Student. Own profile, attendance, fees, results, notices.',
+                'role_slug' => 'student',
+            ],
+            [
+                'name' => 'Demo Parent',
+                'email' => 'parent@school.com',
                 'gender' => 'female',
-                'city' => 'Dhaka',
-                'state' => 'Dhaka',
-                'country' => 'Bangladesh',
-                'bio' => 'HR Manager responsible for managing careers and job applications.',
-                'role_slug' => 'hr-manager',
-            ],
-            [
-                'name' => 'Support Staff',
-                'email' => 'support@mail.com',
-                'password' => Hash::make('password'),
-                'phone' => '+8801707080405',
-                'gender' => 'male',
-                'city' => 'Dhaka',
-                'state' => 'Dhaka',
-                'country' => 'Bangladesh',
-                'bio' => 'Support Staff with read-only access for monitoring leads.',
-                'role_slug' => 'support-staff',
+                'bio' => 'Parent. Linked children\'s attendance, fees, results, notices.',
+                'role_slug' => 'parent',
             ],
         ];
 
-        // Create or update users and assign roles
-        foreach ($demoUsers as $userData) {
-            $roleSlug = $userData['role_slug'];
-            unset($userData['role_slug']);
-
-            // Create or update user
+        foreach ($roleUsers as $data) {
+            $roleSlug = $data['role_slug'];
+            unset($data['role_slug']);
             $user = User::updateOrCreate(
-                ['email' => $userData['email']],
-                $userData
+                ['email' => $data['email']],
+                [
+                    'name' => $data['name'],
+                    'password' => $defaultPassword,
+                    'gender' => $data['gender'],
+                    'bio' => $data['bio'],
+                    ...$defaultLocation,
+                ]
             );
-
-            // Assign role to the user
-            $role = Role::where('slug', $roleSlug)->first();
-            if ($role && !$user->roles()->where('roles.id', $role->id)->exists()) {
-                $user->roles()->attach($role->id);
-            }
+            $this->assignRoleBySlug($user, $roleSlug);
         }
 
-        $this->command->info('Demo users created successfully for all roles!');
+        $this->command->info('Super user and 5 role users seeded (superadmin@school.com, admin@school.com, teacher@school.com, accountant@school.com, student@school.com, parent@school.com). Password: password');
+    }
+
+    private function assignRoleBySlug(User $user, string $roleSlug): void
+    {
+        $role = Role::where('slug', $roleSlug)->first();
+        if ($role && !$user->roles()->where('roles.id', $role->id)->exists()) {
+            $user->roles()->attach($role->id);
+        }
     }
 }
